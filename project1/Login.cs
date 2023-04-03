@@ -91,7 +91,7 @@ namespace project1
                     {
                         form = new Form1();
                     }
-                    //form.Show();
+                    form.Show();
                     Program.LoginStatus = 1;
                     Close();
                 }
@@ -114,6 +114,19 @@ namespace project1
                 MessageBox.Show("잘못된 비밀번호 입니다.");
                 return;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms["Find_idpw"];
+
+            if (form == null)
+            {
+                form = new Find_idpw();
+            }
+            form.Show();
+            
+            
         }
     }
 }

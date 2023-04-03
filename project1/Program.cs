@@ -17,11 +17,7 @@ namespace project1
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
             if(_loginStatus == 1)
-                Application.Run(new Form1());
-
-
-            
-            
+                Application.Run(new Form1());           
         }
     }
 }
