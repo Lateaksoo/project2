@@ -10,7 +10,7 @@ namespace project1
         public static int LoginStatus { get=>_loginStatus; set=>_loginStatus = value; }
         [STAThread]
         static void Main()
-        {
+         {
             //Login login = new Login();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.

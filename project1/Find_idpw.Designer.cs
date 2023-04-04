@@ -31,14 +31,14 @@
             this.FindIDPW = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.txt_phonenum1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
-            this.txt_phonenum2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.FindIDPW.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -52,13 +52,13 @@
             this.FindIDPW.Location = new System.Drawing.Point(0, 0);
             this.FindIDPW.Name = "FindIDPW";
             this.FindIDPW.SelectedIndex = 0;
-            this.FindIDPW.Size = new System.Drawing.Size(284, 145);
+            this.FindIDPW.Size = new System.Drawing.Size(280, 95);
             this.FindIDPW.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.maskedTextBox1);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.txt_phonenum1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -70,20 +70,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(187, 41);
+            this.button1.Location = new System.Drawing.Point(193, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "찾기";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txt_phonenum1
-            // 
-            this.txt_phonenum1.Location = new System.Drawing.Point(71, 12);
-            this.txt_phonenum1.Name = "txt_phonenum1";
-            this.txt_phonenum1.Size = new System.Drawing.Size(191, 23);
-            this.txt_phonenum1.TabIndex = 1;
             // 
             // label1
             // 
@@ -96,35 +89,27 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.maskedTextBox2);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.txt_phonenum2);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txt_id);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(276, 117);
+            this.tabPage2.Size = new System.Drawing.Size(272, 67);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "비밀번호";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(183, 64);
+            this.button2.Location = new System.Drawing.Point(183, 35);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "찾기";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // txt_phonenum2
-            // 
-            this.txt_phonenum2.Location = new System.Drawing.Point(67, 35);
-            this.txt_phonenum2.Name = "txt_phonenum2";
-            this.txt_phonenum2.Size = new System.Drawing.Size(191, 23);
-            this.txt_phonenum2.TabIndex = 5;
-            this.txt_phonenum2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -151,11 +136,27 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "아이디 : ";
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(80, 12);
+            this.maskedTextBox1.Mask = "000-9000-0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBox1.TabIndex = 3;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(67, 35);
+            this.maskedTextBox2.Mask = "000-9000-0000";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBox2.TabIndex = 7;
+            // 
             // Find_idpw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 145);
+            this.ClientSize = new System.Drawing.Size(280, 95);
             this.Controls.Add(this.FindIDPW);
             this.Name = "Find_idpw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -173,14 +174,14 @@
 
         private TabControl FindIDPW;
         private TabPage tabPage1;
-        private TextBox txt_phonenum1;
         private Label label1;
         private TabPage tabPage2;
-        private TextBox txt_phonenum2;
         private Label label3;
         private TextBox txt_id;
         private Label label2;
         private Button button1;
         private Button button2;
+        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox maskedTextBox2;
     }
 }
