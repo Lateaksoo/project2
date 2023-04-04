@@ -57,6 +57,7 @@
             // 
             // txt_id
             // 
+            this.txt_id.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_id.Location = new System.Drawing.Point(78, 12);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(100, 23);
@@ -64,6 +65,7 @@
             // 
             // txt_pw
             // 
+            this.txt_pw.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_pw.Location = new System.Drawing.Point(78, 39);
             this.txt_pw.Name = "txt_pw";
             this.txt_pw.PasswordChar = '*';

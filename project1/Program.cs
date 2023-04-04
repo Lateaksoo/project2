@@ -32,8 +32,9 @@ namespace project1
             conn.Open();
 
             Application.Run(new Login());
-            if(_loginStatus == 1)
-                Application.Run(new Form1());           
+            if (_loginStatus == 1)
+                Application.Run(new Form1());
+
         }
         public static IEnumerable<ManagerModel> List()
         {
