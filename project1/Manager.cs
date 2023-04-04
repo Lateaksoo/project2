@@ -30,7 +30,7 @@ namespace project1
         public void InsertCategory(string category, string keywordName) //카테고리 추가
         {
             // 중복 값을 체크
-            using SqlCommand checkDuplicateCmd = new(checkSql, Login.conn);
+            using SqlCommand checkDuplicateCmd = new(checkSql, Program.Conn);
             checkDuplicateCmd.Parameters.AddWithValue("@category", category);
             checkDuplicateCmd.Parameters.AddWithValue("@keywordName", keywordName);
             int count = (int)checkDuplicateCmd.ExecuteScalar();
@@ -43,7 +43,7 @@ namespace project1
             else
             {
                 // 중복 값이 존재하지 않는 경우, 데이터베이스에 새로운 값을 추가
-                using SqlCommand cmd = new(InsertSql, Login.conn);
+                using SqlCommand cmd = new(InsertSql, Program.Conn);
                 cmd.Parameters.AddWithValue("@category", category);
                 cmd.Parameters.AddWithValue("@keywordName", keywordName);
                 cmd.ExecuteNonQuery();
@@ -52,7 +52,7 @@ namespace project1
 
         public void CategoryListUp(string keywordName) //카테고리 가져오기
         {
-            using SqlCommand cmd = new SqlCommand(selectSql, Login.conn);
+            using SqlCommand cmd = new SqlCommand(selectSql, Program.Conn);
             cmd.Parameters.AddWithValue("@keywordName", keywordName);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -77,7 +77,7 @@ namespace project1
                 return;
             }
 
-            using (SqlCommand cmd = new SqlCommand(DeleteSql, Login.conn))
+            using (SqlCommand cmd = new SqlCommand(DeleteSql, Program.Conn))
             {
                 cmd.Parameters.AddWithValue("@keywordName", keywordName);
 
@@ -95,7 +95,7 @@ namespace project1
         public DataTable GetCategoryComboBox() //카테고리 콤보박스에 넣기
         {
             // 테이블에서 카테고리를 가져와서 DataTable로 반환함
-            using (SqlCommand cmd = new SqlCommand(comboBoxSql, Login.conn))
+            using (SqlCommand cmd = new SqlCommand(comboBoxSql, Program.Conn))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable table = new DataTable();
