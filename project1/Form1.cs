@@ -3,26 +3,36 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-
+using Microsoft.Data.SqlClient;
 
 namespace project1
 {
-    public partial class Form1 : Form
-    {
+        public partial class Form1 : Form
+        {
         NaverSearch naverSearch = new NaverSearch();
-        
-        public string cateagory;
-        public string startDate;
-        public string endDate;
-        public string age;
-        public string gender;
-        public string timeUnit;
-        public string keywordName;
-        public string productName;
-        
+        Manager manager = new Manager();
+        ManagerModel managerModel = new ManagerModel();
+        private string category;
+        private string startDate;
+        private string endDate;
+        private string age;
+        private string gender;
+        private string timeUnit;
+        private string keywordName;
+        private string productName;
+
         public Form1()
         {
             InitializeComponent();
+            category = managerModel.Category;
+            startDate = managerModel.StartDate;
+            endDate = managerModel.EndDate;
+            age = managerModel.Age;
+            gender = managerModel.Gender;
+            timeUnit = managerModel.TimeUnit;
+            keywordName= managerModel.KeywordName;
+            productName = managerModel.ProductName;
+
         }
         //private void CreateChart(Chart chart, string chartTitle, List<double> ratios)
         //{
@@ -71,7 +81,7 @@ namespace project1
                 return; // 메소드 실행 중지
             }
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(cateagory, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
             CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
         }
@@ -100,17 +110,13 @@ namespace project1
 
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cateagory = "";  //제품 고르기
+            category = "";  //제품 고르기
             switch (comboBoxSearch.Text)
             {
-                //case "데스크탑": search = "\"name\":\"데스크탑\",\"param\":[\"50000089\"]"; break;
-                //case "노트북": search = "\"name\":\"노트북\",\"param\":[\"50000151\"]"; break;
-                //case "모니터": search = "\"name\":\"모니터\",\"param\":[\"50000153\"]"; break;
-                //case "키보드/마우스": search = "\"name\":\"키보드/마우스\",\"param\":[\"50002927\"]"; break;
-                case "데스크탑": cateagory = "50000089"; keywordName = "데스크탑"; break;
-                case "노트북": cateagory = "50000151"; keywordName = "노트북"; break;
-                case "모니터": cateagory = "50000153"; keywordName = "모니터"; break;
-                case "키보드/마우스": cateagory = "50002927"; keywordName = "키보드/마우스"; break;
+                case "데스크탑": category = "50000089"; keywordName = "데스크탑"; break;
+                case "노트북": category = "50000151"; keywordName = "노트북"; break;
+                case "모니터": category = "50000153"; keywordName = "모니터"; break;
+                case "키보드/마우스": category = "50002927"; keywordName = "키보드/마우스"; break;
             }
         }
 
@@ -128,7 +134,7 @@ namespace project1
         {
             timeUnit = "month"; //월별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(cateagory, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
             CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -138,7 +144,7 @@ namespace project1
         {
             timeUnit = "week"; //주별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(cateagory, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
             CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -147,6 +153,11 @@ namespace project1
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             productName = txtSearch.Text;
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
+        {
+            manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
         }
     }
 }

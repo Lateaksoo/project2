@@ -26,7 +26,8 @@ namespace project1
         
         List<ManagerModel> list = new();
         string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
-        SqlConnection conn;
+        public static SqlConnection conn;
+
         SqlDataReader reader;
         public int loginstatus; 
         

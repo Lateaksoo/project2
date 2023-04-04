@@ -34,6 +34,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtKeywordName = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnAddCategory = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCategory = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,6 +65,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +95,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.txtKeywordName);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.btnAddCategory);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.txtCategory);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -94,6 +109,70 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "상품추가";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(37, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 15);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "카테고리 추가";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(41, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "카테고리이름";
+            // 
+            // txtKeywordName
+            // 
+            this.txtKeywordName.Location = new System.Drawing.Point(126, 116);
+            this.txtKeywordName.Name = "txtKeywordName";
+            this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
+            this.txtKeywordName.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "데스크탑",
+            "노트북",
+            "모니터",
+            "키보드/마우스"});
+            this.comboBox1.Location = new System.Drawing.Point(444, 48);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Location = new System.Drawing.Point(98, 167);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnAddCategory.TabIndex = 2;
+            this.btnAddCategory.Text = "카테고리 추가";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "카테고리번호";
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(126, 59);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(100, 23);
+            this.txtCategory.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -357,6 +436,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -392,5 +473,12 @@
         private Label label6;
         private TextBox txtSearch;
         private TabPage tabPage4;
+        private Label label9;
+        private Label label8;
+        private TextBox txtKeywordName;
+        private ComboBox comboBox1;
+        private Button btnAddCategory;
+        private Label label7;
+        private TextBox txtCategory;
     }
 }
