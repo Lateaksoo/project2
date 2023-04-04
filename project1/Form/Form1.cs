@@ -22,7 +22,7 @@ namespace project1
         private string gender;
         private string timeUnit;
         private string keywordName;
-        private string productName;
+        private string searchProductName;
 
         public Form1()
         {
@@ -36,7 +36,7 @@ namespace project1
             gender = productManagerModel.Gender;
             timeUnit = productManagerModel.TimeUnit;
             keywordName = productManagerModel.KeywordName;
-            productName = productManagerModel.ProductName;
+            searchProductName = productManagerModel.SearchProductName;
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace project1
                 return; // 메소드 실행 중지
             }
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
         }
@@ -121,7 +121,7 @@ namespace project1
         {
             timeUnit = "month"; //월별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -131,7 +131,7 @@ namespace project1
         {
             timeUnit = "week"; //주별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -139,7 +139,7 @@ namespace project1
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            productName = txtSearch.Text;
+            searchProductName = txtSearch.Text;
         }
 
         //---------------------------------------------------------------------------------
@@ -165,7 +165,8 @@ namespace project1
         //상품 관리 탭
         private void btnAddProduct_Click(object sender, EventArgs e) //상품 추가
         {
-
+            AddProduct addProduct = new AddProduct();
+            addProduct.Show();
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e) //상품 삭제
