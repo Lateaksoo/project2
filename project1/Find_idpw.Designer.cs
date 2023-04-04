@@ -30,15 +30,15 @@
         {
             this.FindIDPW = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txt_pnid = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txt_pnpw = new System.Windows.Forms.MaskedTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.FindIDPW.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -57,16 +57,24 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.maskedTextBox1);
+            this.tabPage1.Controls.Add(this.txt_pnid);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(276, 117);
+            this.tabPage1.Size = new System.Drawing.Size(272, 67);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "아이디";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txt_pnid
+            // 
+            this.txt_pnid.Location = new System.Drawing.Point(80, 12);
+            this.txt_pnid.Mask = "000-9000-0000";
+            this.txt_pnid.Name = "txt_pnid";
+            this.txt_pnid.Size = new System.Drawing.Size(100, 23);
+            this.txt_pnid.TabIndex = 3;
             // 
             // button1
             // 
@@ -89,7 +97,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.maskedTextBox2);
+            this.tabPage2.Controls.Add(this.txt_pnpw);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txt_id);
@@ -102,14 +110,25 @@
             this.tabPage2.Text = "비밀번호";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // txt_pnpw
+            // 
+            this.txt_pnpw.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_pnpw.Location = new System.Drawing.Point(67, 35);
+            this.txt_pnpw.Mask = "000-9000-0000";
+            this.txt_pnpw.Name = "txt_pnpw";
+            this.txt_pnpw.Size = new System.Drawing.Size(100, 23);
+            this.txt_pnpw.TabIndex = 4;
+            this.txt_pnpw.UseWaitCursor = true;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(183, 35);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 5;
             this.button2.Text = "찾기";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -136,22 +155,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "아이디 : ";
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(80, 12);
-            this.maskedTextBox1.Mask = "000-9000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBox1.TabIndex = 3;
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(67, 35);
-            this.maskedTextBox2.Mask = "000-9000-0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBox2.TabIndex = 7;
-            // 
             // Find_idpw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -161,6 +164,7 @@
             this.Name = "Find_idpw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find_idpw";
+            this.Load += new System.EventHandler(this.Find_idpw_Load);
             this.FindIDPW.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -181,7 +185,7 @@
         private Label label2;
         private Button button1;
         private Button button2;
-        private MaskedTextBox maskedTextBox1;
-        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox txt_pnid;
+        private MaskedTextBox txt_pnpw;
     }
 }

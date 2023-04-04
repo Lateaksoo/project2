@@ -25,9 +25,7 @@ namespace project1
         //----------------------------------------------------------------------------------------------//
         
         List<ManagerModel> list = new();
-        string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
-        SqlConnection conn;
-        SqlDataReader reader;
+        
         public int loginstatus; 
         
 
@@ -35,52 +33,26 @@ namespace project1
         {
             
             InitializeComponent();
-            conn = new(strConn);
-            conn.Open();
+           
+            Program.List();
+            
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-           
-        }
-        public object List()
-        {
-            using SqlCommand cmd = new($"select * from Manager", conn);
-            SqlDataAdapter adapter = new(cmd);
-            DataSet ds = new();
-            adapter.Fill(ds);
-
-            DataTable table = ds.Tables[0];
-
             
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(new()
-                {
-                    Uid = (int)row["uid"],
-                    Name = (string)row["name"],
-                    PhoneNum = (string)row["phonenum"],
-                    PassWord = (string)row["pw"],
-                    Email= (string)row["email"],
-                    RegDate = (DateTime)row["regdate"],
-                });
-            }
-
-            return list;
         }
+        
         
         
         private void button1_Click(object sender, EventArgs e)
-        {
-
-            List();
-
+        {           
             string id = "", pw = "";
             id = txt_id.Text;
             pw = txt_pw.Text;
             int ide = 0;
             int pwe = 0;
-            foreach (var item in list)
+            foreach (var item in Program.List())
             {
                 if (id == item.Name && pw == item.PassWord)
                 {
@@ -93,6 +65,8 @@ namespace project1
                     }
                     //form.Show();
                     Program.LoginStatus = 1;
+                    Program.Uid= item.Uid;
+                    //Program.Conn.Close();
                     Close();
                 }
                 else if (id == item.Name)
@@ -124,9 +98,18 @@ namespace project1
             {
                 form = new Find_idpw();
             }
+            form.Show();            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms["AddManager"];
+
+            if (form == null)
+            {
+                form = new AddManager();
+            }
             form.Show();
-            
-            
         }
     }
 }
