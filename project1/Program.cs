@@ -51,6 +51,7 @@ namespace project1
         { 
             testConn= new SqlConnection(strConn_test);
             testConn.Open();
+
             using SqlCommand cmd = new("INSERT INTO Manager(name, pw, phonenum, email) VALUES (@name, @pw, @phonenum, @email)", testConn);
             foreach (var item in list)
             { 
