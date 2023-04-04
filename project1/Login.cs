@@ -84,14 +84,14 @@ namespace project1
             {
                 if (id == item.Name && pw == item.PassWord)
                 {
-                    
                     var form = Application.OpenForms["Form1"];
-
+                    ide = 1;
+                    pwe = 1;
                     if (form == null)
                     {
                         form = new Form1();
                     }
-                    form.Show();
+                    //form.Show();
                     Program.LoginStatus = 1;
                     Close();
                 }
