@@ -15,11 +15,18 @@ namespace project1
         private static int _uid;
         public static int LoginStatus { get=>_loginStatus; set=>_loginStatus = value; }
         public static int Uid { get=>_uid; set=>_uid = value; }
-        //static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
-        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
+
+
+        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
         private static SqlConnection conn;
+
+
+
         public static SqlConnection Conn { get=>conn; set=>conn = value; }
         static List<ManagerModel> list = new();
+
+        static string strConn_test = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\TeamProject\Project_ver1.0\project1\Database1.mdf;Integrated Security=True";
+        private static SqlConnection testConn;
 
 
         [STAThread]
@@ -32,10 +39,28 @@ namespace project1
             conn = new(strConn);
             conn.Open();
 
+            List();
+            TestDatabase();
+
             Application.Run(new Login());
             if (_loginStatus == 1)
                 Application.Run(new Form1());
 
+        }
+        public static void TestDatabase()
+        { 
+            testConn= new SqlConnection(strConn_test);
+            testConn.Open();
+
+            using SqlCommand cmd = new("INSERT INTO Manager(name, pw, phonenum, email) VALUES (@name, @pw, @phonenum, @email)", testConn);
+            foreach (var item in list)
+            { 
+                cmd.Parameters.AddWithValue("@name", item.Name);
+                cmd.Parameters.AddWithValue("@pw", item.PassWord);
+                cmd.Parameters.AddWithValue("@phonenum", item.PhoneNum);
+                cmd.Parameters.AddWithValue("@email", item.Email);
+                cmd.ExecuteNonQuery();
+            }
         }
         public static IEnumerable<ManagerModel> List()
         {
