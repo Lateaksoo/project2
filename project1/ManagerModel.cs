@@ -31,7 +31,7 @@ namespace project1
 
         // 매개변수없는 생성자
         public ManagerModel() => _regDate = DateTime.Now;
-
+        
         public string Category
         {
             get { return _category; }

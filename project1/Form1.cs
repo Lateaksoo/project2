@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data;
 
 namespace project1
 {
-        public partial class Form1 : Form
-        {
+    public partial class Form1 : Form
+    {
         NaverSearch naverSearch = new NaverSearch();
-        Manager manager = new Manager();
-        ManagerModel managerModel = new ManagerModel();
+
+        private ManagerModel managerModel;
+        private Manager manager;
         private string category;
         private string startDate;
         private string endDate;
@@ -24,40 +27,36 @@ namespace project1
         public Form1()
         {
             InitializeComponent();
+            managerModel = new ManagerModel();
+            manager = new Manager(managerModel);
             category = managerModel.Category;
             startDate = managerModel.StartDate;
             endDate = managerModel.EndDate;
             age = managerModel.Age;
             gender = managerModel.Gender;
             timeUnit = managerModel.TimeUnit;
-            keywordName= managerModel.KeywordName;
+            keywordName = managerModel.KeywordName;
             productName = managerModel.ProductName;
 
         }
-        //private void CreateChart(Chart chart, string chartTitle, List<double> ratios)
-        //{
-        //    Series series = chart.Series.Add(chartTitle);
-        //    series.ChartType = SeriesChartType.Column;
-        //    for (int i = 0; i < ratios.Count; i++)
-        //    {
-        //        series.Points.AddXY(i + 1, ratios[i]);
-        //    }
-        //}
-        private void CreateChart(Chart chart, string chartTitle, dynamic result)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            List<double> ratios = new List<double>();
-            foreach (var data in result.results[0].data)
+            DataTable categoryTable = manager.GetCategoryComboBox();
+
+            // 콤보박스에 카테고리를 추가함
+            foreach (DataRow row in categoryTable.Rows)
             {
-                ratios.Add((double)data.ratio);
+                comboBoxCategory.Items.Add(row["keyword_name"]);
             }
 
-            Series series = chart.Series.Add(chartTitle);
-            series.ChartType = SeriesChartType.Column;
-            for (int i = 0; i < ratios.Count; i++)
-            {
-                series.Points.AddXY(i + 1, ratios[i]);
-            }
+            //기본으로 선택되어 있는 값
+            comboBoxCategory.SelectedIndex = 0;
+            timeUnit = "month";
+            comboBoxSex.SelectedIndex = 0;
+            dtpStartDate.Value = DateTime.Now.AddMonths(-6);
+            dtpEndDate.Value = DateTime.Now;
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             bool isAnyChecked = false; // 체크박스가 한 개 이상 체크되었는지 확인하는 변수
@@ -83,10 +82,10 @@ namespace project1
 
             dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
-            CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
+            manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
         }
 
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e) 
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
             startDate = "";  //시작일을 초기화해줌
             startDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
@@ -110,25 +109,11 @@ namespace project1
 
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            category = "";  //제품 고르기
-            switch (comboBoxSearch.Text)
-            {
-                case "데스크탑": category = "50000089"; keywordName = "데스크탑"; break;
-                case "노트북": category = "50000151"; keywordName = "노트북"; break;
-                case "모니터": category = "50000153"; keywordName = "모니터"; break;
-                case "키보드/마우스": category = "50002927"; keywordName = "키보드/마우스"; break;
-            }
+            manager.CategoryListUp(comboBoxCategory.Text);
+            keywordName = managerModel.KeywordName;
+            category = managerModel.Category;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //기본으로 선택되어 있는 값
-            timeUnit = "month";
-            comboBoxSearch.SelectedIndex = 0;
-            comboBoxSex.SelectedIndex = 0;
-            dtpStartDate.Value = DateTime.Now.AddMonths(-6);
-            dtpEndDate.Value = DateTime.Now;
-        }
 
         private void btnMonth_Click(object sender, EventArgs e)
         {
@@ -136,7 +121,7 @@ namespace project1
 
             dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
-            CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
+            manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
         }
 
@@ -146,7 +131,7 @@ namespace project1
 
             dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
             chart1.Series.Clear();
-            CreateChart(chart1, $"{comboBoxSearch.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
+            manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
         }
 
@@ -158,6 +143,10 @@ namespace project1
         private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
         {
             manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
+        }
+        private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
+        {
+            manager.DeleteCategory(txtDeleteKeyName.Text);
         }
     }
 }

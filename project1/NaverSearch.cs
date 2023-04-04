@@ -10,7 +10,7 @@ namespace project1
 {
     internal class NaverSearch
     {
-        public string naver(string cateagory, string startDate, string endDate, string gender, string age, string timeUnit,string keywordName,string productName)
+        public string naver(string category, string startDate, string endDate, string gender, string age, string timeUnit,string keywordName,string productName)
         {
             Form1 form1 = new Form1();
 
@@ -31,7 +31,7 @@ namespace project1
             string body1 = $"{{\"startDate\":\"{startDate}\"," +
                            $"\"endDate\":\"{endDate}\"," +
                            $"\"timeUnit\":\"{timeUnit}\"," +
-                           $"\"category\":\"{cateagory}\"," +
+                           $"\"category\":\"{category}\"," +
                            $"\"keyword\":[{{\"name\":\"{keywordName}\",\"param\":[\"{productName}\"]}}]," +
                            $"\"device\":\"pc\"," +
                            $"\"ages\":[\"{age}\"]," +
@@ -41,7 +41,7 @@ namespace project1
             string body = $"{{\"startDate\":\"{startDate}\"," +
                           $"\"endDate\":\"{endDate}\"," +
                           $"\"timeUnit\":\"{timeUnit}\"," +
-                          $"\"category\":[{{{cateagory}}}]," +
+                          $"\"category\":[{{{category}}}]," +
                           $"\"device\":\"pc\"," +
                           $"\"ages\":[\"{age}\"]," +
                           $"\"gender\":\"{gender}\"}}";

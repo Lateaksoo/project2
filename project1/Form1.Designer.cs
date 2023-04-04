@@ -34,10 +34,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDeleteKeyName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtKeywordName = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCategory = new System.Windows.Forms.TextBox();
@@ -58,12 +61,13 @@
             this.check30 = new System.Windows.Forms.CheckBox();
             this.check20 = new System.Windows.Forms.CheckBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxSearch = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.check10 = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -76,6 +80,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -95,10 +100,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnDeleteCategory);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.txtDeleteKeyName);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.txtKeywordName);
-            this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.btnAddCategory);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.txtCategory);
@@ -107,8 +115,43 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(749, 545);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "상품추가";
+            this.tabPage2.Text = "카테고리 관리";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteCategory
+            // 
+            this.btnDeleteCategory.Location = new System.Drawing.Point(456, 167);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnDeleteCategory.TabIndex = 12;
+            this.btnDeleteCategory.Text = "카테고리 삭제";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(388, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 15);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "카테고리이름";
+            // 
+            // txtDeleteKeyName
+            // 
+            this.txtDeleteKeyName.Location = new System.Drawing.Point(483, 62);
+            this.txtDeleteKeyName.Name = "txtDeleteKeyName";
+            this.txtDeleteKeyName.Size = new System.Drawing.Size(100, 23);
+            this.txtDeleteKeyName.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(384, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 15);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "카테고리 삭제";
             // 
             // label9
             // 
@@ -134,19 +177,6 @@
             this.txtKeywordName.Name = "txtKeywordName";
             this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
             this.txtKeywordName.TabIndex = 6;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "데스크탑",
-            "노트북",
-            "모니터",
-            "키보드/마우스"});
-            this.comboBox1.Location = new System.Drawing.Point(444, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 5;
             // 
             // btnAddCategory
             // 
@@ -192,7 +222,7 @@
             this.tabPage3.Controls.Add(this.check30);
             this.tabPage3.Controls.Add(this.check20);
             this.tabPage3.Controls.Add(this.dtpStartDate);
-            this.tabPage3.Controls.Add(this.comboBoxSearch);
+            this.tabPage3.Controls.Add(this.comboBoxCategory);
             this.tabPage3.Controls.Add(this.check10);
             this.tabPage3.Controls.Add(this.btnSearch);
             this.tabPage3.Controls.Add(this.label1);
@@ -356,19 +386,14 @@
             this.dtpStartDate.TabIndex = 5;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
-            // comboBoxSearch
+            // comboBoxCategory
             // 
-            this.comboBoxSearch.FormattingEnabled = true;
-            this.comboBoxSearch.Items.AddRange(new object[] {
-            "데스크탑",
-            "노트북",
-            "모니터",
-            "키보드/마우스"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(104, 25);
-            this.comboBoxSearch.Name = "comboBoxSearch";
-            this.comboBoxSearch.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxSearch.TabIndex = 4;
-            this.comboBoxSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(104, 25);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxCategory.TabIndex = 4;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
             // 
             // check10
             // 
@@ -426,6 +451,16 @@
             this.tabPage4.Text = "계정관리";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(749, 545);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "상품추가";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -463,7 +498,7 @@
         private CheckBox check30;
         private CheckBox check20;
         private DateTimePicker dtpStartDate;
-        private ComboBox comboBoxSearch;
+        private ComboBox comboBoxCategory;
         private CheckBox check10;
         private Button btnSearch;
         private Label label1;
@@ -476,9 +511,13 @@
         private Label label9;
         private Label label8;
         private TextBox txtKeywordName;
-        private ComboBox comboBox1;
         private Button btnAddCategory;
         private Label label7;
         private TextBox txtCategory;
+        private Button btnDeleteCategory;
+        private Label label11;
+        private TextBox txtDeleteKeyName;
+        private Label label10;
+        private TabPage tabPage1;
     }
 }
