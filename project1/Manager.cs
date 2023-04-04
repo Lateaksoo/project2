@@ -17,6 +17,7 @@ namespace project1
             _productManagerModel = productManagerModel;
         }
 
+        #region SQL queries
         //카테고리 추가 sql
         const string InsertSql = "INSERT INTO products (category, keyword_name) VALUES (@category, @keywordName)";
         //카테고리 삭제 sql
@@ -27,6 +28,10 @@ namespace project1
         const string selectSql = "SELECT category, keyword_name FROM products WHERE keyword_name = @keywordName";
         //콤보박스에 카테고리 넣기 sql
         const string comboBoxSql = "SELECT DISTINCT keyword_name FROM products";
+        #endregion
+
+        //카테고리 관련
+        //---------------------------------------------------------------------------------------
         public void InsertCategory(string category, string keywordName) //카테고리 추가
         {
             // 중복 값을 체크
@@ -49,7 +54,7 @@ namespace project1
                 cmd.ExecuteNonQuery();
             }
         }
-
+        
         public void CategoryListUp(string keywordName) //카테고리 가져오기
         {
             using SqlCommand cmd = new SqlCommand(selectSql, Program.Conn);
@@ -69,7 +74,7 @@ namespace project1
             reader.Close();
         }
 
-        public void DeleteCategory(string keywordName)
+        public void DeleteCategory(string keywordName) //카테고리 삭제하기
         {
             if (string.IsNullOrWhiteSpace(keywordName))
             {
@@ -104,6 +109,8 @@ namespace project1
             }
         }
 
+        //---------------------------------------------------------------------------------------
+
         public void CreateChart(Chart chart, string chartTitle, dynamic result) //차트 만들기
         {
             List<double> ratios = new List<double>();
@@ -119,6 +126,9 @@ namespace project1
                 series.Points.AddXY(i + 1, ratios[i]);
             }
         }
+
+
+
 
 
     }//end class
