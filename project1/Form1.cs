@@ -148,5 +148,6 @@ namespace project1
         {
             manager.DeleteCategory(txtDeleteKeyName.Text);
         }
+
     }
 }
