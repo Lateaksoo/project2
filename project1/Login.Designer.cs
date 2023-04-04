@@ -71,6 +71,7 @@
             this.txt_pw.PasswordChar = '*';
             this.txt_pw.Size = new System.Drawing.Size(100, 23);
             this.txt_pw.TabIndex = 3;
+            this.txt_pw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_pw_KeyDown);
             // 
             // button1
             // 
@@ -118,6 +119,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Enter += new System.EventHandler(this.button1_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
