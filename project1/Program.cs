@@ -15,7 +15,8 @@ namespace project1
         private static int _uid;
         public static int LoginStatus { get=>_loginStatus; set=>_loginStatus = value; }
         public static int Uid { get=>_uid; set=>_uid = value; }
-        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
+        //static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
+        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
         private static SqlConnection conn;
         public static SqlConnection Conn { get=>conn; set=>conn = value; }
         static List<ManagerModel> list = new();

@@ -31,19 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabProductManagement = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnDeleteCategory = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtDeleteKeyName = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtKeywordName = new System.Windows.Forms.TextBox();
-            this.btnAddCategory = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,143 +54,39 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDeleteKeyName = new System.Windows.Forms.TextBox();
+            this.txtKeywordName = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnAddCategory = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tabProductManagement = new System.Windows.Forms.TabPage();
+            this.btnModifyProduct = new System.Windows.Forms.Button();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabProductManagement.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabPage4
             // 
-            this.tabControl1.Controls.Add(this.tabProductManagement);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(757, 573);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabProductManagement
-            // 
-            this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
-            this.tabProductManagement.Name = "tabProductManagement";
-            this.tabProductManagement.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductManagement.Size = new System.Drawing.Size(749, 545);
-            this.tabProductManagement.TabIndex = 0;
-            this.tabProductManagement.Text = "상품관리";
-            this.tabProductManagement.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.btnDeleteCategory);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.txtDeleteKeyName);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.txtKeywordName);
-            this.tabPage2.Controls.Add(this.btnAddCategory);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.txtCategory);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(749, 545);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "카테고리 관리";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteCategory
-            // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(456, 167);
-            this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(104, 28);
-            this.btnDeleteCategory.TabIndex = 12;
-            this.btnDeleteCategory.Text = "카테고리 삭제";
-            this.btnDeleteCategory.UseVisualStyleBackColor = true;
-            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(388, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 15);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "카테고리이름";
-            // 
-            // txtDeleteKeyName
-            // 
-            this.txtDeleteKeyName.Location = new System.Drawing.Point(483, 62);
-            this.txtDeleteKeyName.Name = "txtDeleteKeyName";
-            this.txtDeleteKeyName.Size = new System.Drawing.Size(100, 23);
-            this.txtDeleteKeyName.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(384, 23);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "카테고리 삭제";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 15);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "카테고리 추가";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "카테고리이름";
-            // 
-            // txtKeywordName
-            // 
-            this.txtKeywordName.Location = new System.Drawing.Point(126, 116);
-            this.txtKeywordName.Name = "txtKeywordName";
-            this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
-            this.txtKeywordName.TabIndex = 6;
-            // 
-            // btnAddCategory
-            // 
-            this.btnAddCategory.Location = new System.Drawing.Point(98, 167);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(104, 28);
-            this.btnAddCategory.TabIndex = 2;
-            this.btnAddCategory.Text = "카테고리 추가";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
-            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 62);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 15);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "카테고리번호";
-            // 
-            // txtCategory
-            // 
-            this.txtCategory.Location = new System.Drawing.Point(126, 59);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(100, 23);
-            this.txtCategory.TabIndex = 0;
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(749, 545);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "계정관리";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -393,7 +277,7 @@
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(121, 23);
             this.comboBoxCategory.TabIndex = 4;
-            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // check10
             // 
@@ -441,25 +325,177 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // tabPage4
+            // tabPage2
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(749, 545);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "계정관리";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.btnDeleteCategory);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.txtDeleteKeyName);
+            this.tabPage2.Controls.Add(this.txtKeywordName);
+            this.tabPage2.Controls.Add(this.txtCategory);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.btnAddCategory);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(749, 545);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "카테고리 관리";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // btnDeleteCategory
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(749, 545);
-            this.tabPage1.TabIndex = 4;
-            this.tabPage1.Text = "상품추가";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(456, 167);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnDeleteCategory.TabIndex = 12;
+            this.btnDeleteCategory.Text = "카테고리 삭제";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(388, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 15);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "카테고리이름";
+            // 
+            // txtDeleteKeyName
+            // 
+            this.txtDeleteKeyName.Location = new System.Drawing.Point(483, 62);
+            this.txtDeleteKeyName.Name = "txtDeleteKeyName";
+            this.txtDeleteKeyName.Size = new System.Drawing.Size(100, 23);
+            this.txtDeleteKeyName.TabIndex = 10;
+            // 
+            // txtKeywordName
+            // 
+            this.txtKeywordName.Location = new System.Drawing.Point(126, 116);
+            this.txtKeywordName.Name = "txtKeywordName";
+            this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
+            this.txtKeywordName.TabIndex = 6;
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(126, 59);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(100, 23);
+            this.txtCategory.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(384, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 15);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "카테고리 삭제";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(37, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 15);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "카테고리 추가";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(41, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "카테고리이름";
+            // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Location = new System.Drawing.Point(98, 167);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnAddCategory.TabIndex = 2;
+            this.btnAddCategory.Text = "카테고리 추가";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "카테고리번호";
+            // 
+            // tabProductManagement
+            // 
+            this.tabProductManagement.Controls.Add(this.btnModifyProduct);
+            this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
+            this.tabProductManagement.Controls.Add(this.btnAddProduct);
+            this.tabProductManagement.Controls.Add(this.listBox1);
+            this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
+            this.tabProductManagement.Name = "tabProductManagement";
+            this.tabProductManagement.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProductManagement.Size = new System.Drawing.Size(749, 545);
+            this.tabProductManagement.TabIndex = 0;
+            this.tabProductManagement.Text = "상품관리";
+            this.tabProductManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnModifyProduct
+            // 
+            this.btnModifyProduct.Location = new System.Drawing.Point(299, 467);
+            this.btnModifyProduct.Name = "btnModifyProduct";
+            this.btnModifyProduct.Size = new System.Drawing.Size(106, 23);
+            this.btnModifyProduct.TabIndex = 4;
+            this.btnModifyProduct.Text = "상품정보 수정";
+            this.btnModifyProduct.UseVisualStyleBackColor = true;
+            this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.Location = new System.Drawing.Point(172, 467);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteProduct.TabIndex = 3;
+            this.btnDeleteProduct.Text = "상품 삭제";
+            this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(66, 467);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnAddProduct.TabIndex = 2;
+            this.btnAddProduct.Text = "상품 추가";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(6, 6);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(740, 424);
+            this.listBox1.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabProductManagement);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(757, 573);
+            this.tabControl1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -470,22 +506,25 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabProductManagement.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tabProductManagement;
-        private TabPage tabPage2;
+        private TabPage tabPage4;
         private TabPage tabPage3;
+        private TextBox txtSearch;
+        private Label label6;
+        private Button btnWeek;
+        private Button btnMonth;
         private ComboBox comboBoxSex;
         private Label label5;
         private Label label4;
@@ -503,21 +542,22 @@
         private Button btnSearch;
         private Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private Button btnWeek;
-        private Button btnMonth;
-        private Label label6;
-        private TextBox txtSearch;
-        private TabPage tabPage4;
-        private Label label9;
-        private Label label8;
-        private TextBox txtKeywordName;
-        private Button btnAddCategory;
-        private Label label7;
-        private TextBox txtCategory;
+        private TabPage tabPage2;
         private Button btnDeleteCategory;
         private Label label11;
         private TextBox txtDeleteKeyName;
+        private TextBox txtKeywordName;
+        private TextBox txtCategory;
         private Label label10;
-        private TabPage tabPage1;
+        private Label label9;
+        private Label label8;
+        private Button btnAddCategory;
+        private Label label7;
+        private TabPage tabProductManagement;
+        private Button btnModifyProduct;
+        private Button btnDeleteProduct;
+        private Button btnAddProduct;
+        private ListBox listBox1;
+        private TabControl tabControl1;
     }
 }
