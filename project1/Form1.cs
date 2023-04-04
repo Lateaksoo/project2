@@ -13,7 +13,7 @@ namespace project1
     {
         NaverSearch naverSearch = new NaverSearch();
 
-        private ManagerModel managerModel;
+        private ProductManagerModel productManagerModel;
         private Manager manager;
         private string category;
         private string startDate;
@@ -27,16 +27,16 @@ namespace project1
         public Form1()
         {
             InitializeComponent();
-            managerModel = new ManagerModel();
-            manager = new Manager(managerModel);
-            category = managerModel.Category;
-            startDate = managerModel.StartDate;
-            endDate = managerModel.EndDate;
-            age = managerModel.Age;
-            gender = managerModel.Gender;
-            timeUnit = managerModel.TimeUnit;
-            keywordName = managerModel.KeywordName;
-            productName = managerModel.ProductName;
+            productManagerModel = new ProductManagerModel();
+            manager = new Manager(productManagerModel);
+            category = productManagerModel.Category;
+            startDate = productManagerModel.StartDate;
+            endDate = productManagerModel.EndDate;
+            age = productManagerModel.Age;
+            gender = productManagerModel.Gender;
+            timeUnit = productManagerModel.TimeUnit;
+            keywordName = productManagerModel.KeywordName;
+            productName = productManagerModel.ProductName;
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -57,7 +57,9 @@ namespace project1
             dtpEndDate.Value = DateTime.Now;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        //---------------------------------------------------------------------------------
+        //판매 트렌드 탭
+        private void btnSearch_Click(object sender, EventArgs e) //조회 버튼 
         {
             bool isAnyChecked = false; // 체크박스가 한 개 이상 체크되었는지 확인하는 변수
             CheckBox[] checkBoxes = { check10, check20, check30, check40, check50, check60 };
@@ -85,19 +87,19 @@ namespace project1
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
         }
 
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e) //시작일
         {
             startDate = "";  //시작일을 초기화해줌
             startDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
         }
 
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e) //종료일
         {
             endDate = "";  //종료일을 초기화해줌
             endDate = dtpEndDate.Value.ToString("yyyy-MM-dd");
         }
 
-        private void comboBoxSex_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxSex_SelectedIndexChanged(object sender, EventArgs e) //성별 콤보박스
         {
             gender = ""; //성별 고르기
             switch (comboBoxSex.Text)
@@ -107,15 +109,14 @@ namespace project1
             }
         }
 
-        private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e) //카테고리 콤보박스
         {
             manager.CategoryListUp(comboBoxCategory.Text);
-            keywordName = managerModel.KeywordName;
-            category = managerModel.Category;
+            keywordName = productManagerModel.KeywordName;
+            category = productManagerModel.Category;
         }
 
-
-        private void btnMonth_Click(object sender, EventArgs e)
+        private void btnMonth_Click(object sender, EventArgs e) //월간 버튼
         {
             timeUnit = "month"; //월별로 설정
 
@@ -125,7 +126,7 @@ namespace project1
 
         }
 
-        private void btnWeek_Click(object sender, EventArgs e)
+        private void btnWeek_Click(object sender, EventArgs e) //주간 버튼
         {
             timeUnit = "week"; //주별로 설정
 
@@ -140,6 +141,8 @@ namespace project1
             productName = txtSearch.Text;
         }
 
+        //---------------------------------------------------------------------------------
+        //카테고리 관리 탭
         private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
         {
             manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
@@ -149,5 +152,24 @@ namespace project1
             manager.DeleteCategory(txtDeleteKeyName.Text);
         }
 
+
+        //---------------------------------------------------------------------------------
+        //상품 관리 탭
+        private void btnAddProduct_Click(object sender, EventArgs e) //상품 추가
+        {
+
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e) //상품 삭제
+        {
+
+        }
+
+        private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정
+        {
+
+        }
+
+      
     }
 }

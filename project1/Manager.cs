@@ -11,10 +11,10 @@ namespace project1
 {
     internal class Manager
     {
-        private readonly ManagerModel _managerModel;
-        public Manager(ManagerModel managerModel)
+        private readonly ProductManagerModel _productManagerModel;
+        public Manager(ProductManagerModel productManagerModel)
         {
-            _managerModel = managerModel;
+            _productManagerModel = productManagerModel;
         }
 
         //카테고리 추가 sql
@@ -61,8 +61,8 @@ namespace project1
                 {
                     string resultcategory = reader.GetString(0);
                     string resultkeywordName = reader.GetString(1);
-                    _managerModel.Category = resultcategory;
-                    _managerModel.KeywordName = resultkeywordName;
+                    _productManagerModel.Category = resultcategory;
+                    _productManagerModel.KeywordName = resultkeywordName;
 
                 }
             }
