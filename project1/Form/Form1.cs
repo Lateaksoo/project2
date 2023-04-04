@@ -115,6 +115,7 @@ namespace project1
             keywordName = productManagerModel.KeywordName;
             category = productManagerModel.Category;
         }
+       
 
         private void btnMonth_Click(object sender, EventArgs e) //월간 버튼
         {
@@ -146,10 +147,17 @@ namespace project1
         private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
         {
             manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
+            manager.CategoryListUp(txtKeywordName.Text);
+            comboBoxCategory.Items.Add(txtKeywordName.Text);
+            txtCategory.Text = "";
+            txtKeywordName.Text = "";
         }
         private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
         {
             manager.DeleteCategory(txtDeleteKeyName.Text);
+            manager.CategoryListUp(txtDeleteKeyName.Text);
+            comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
+            txtDeleteKeyName.Text = "";
         }
 
 
@@ -170,6 +178,6 @@ namespace project1
 
         }
 
-      
+
     }
 }

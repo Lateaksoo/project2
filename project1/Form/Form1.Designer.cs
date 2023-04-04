@@ -69,13 +69,14 @@
             this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProductManagement.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -433,10 +434,10 @@
             // 
             // tabProductManagement
             // 
+            this.tabProductManagement.Controls.Add(this.dataGridView1);
             this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
-            this.tabProductManagement.Controls.Add(this.listBox1);
             this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
             this.tabProductManagement.Name = "tabProductManagement";
             this.tabProductManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -447,7 +448,7 @@
             // 
             // btnModifyProduct
             // 
-            this.btnModifyProduct.Location = new System.Drawing.Point(299, 467);
+            this.btnModifyProduct.Location = new System.Drawing.Point(521, 489);
             this.btnModifyProduct.Name = "btnModifyProduct";
             this.btnModifyProduct.Size = new System.Drawing.Size(106, 23);
             this.btnModifyProduct.TabIndex = 4;
@@ -457,7 +458,7 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(172, 467);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(304, 489);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteProduct.TabIndex = 3;
@@ -467,22 +468,13 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(66, 467);
+            this.btnAddProduct.Location = new System.Drawing.Point(77, 489);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 2;
             this.btnAddProduct.Text = "상품 추가";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(6, 6);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(740, 424);
-            this.listBox1.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -496,6 +488,16 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(757, 573);
             this.tabControl1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(743, 458);
+            this.dataGridView1.TabIndex = 5;
             // 
             // Form1
             // 
@@ -513,6 +515,7 @@
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -557,7 +560,7 @@
         private Button btnModifyProduct;
         private Button btnDeleteProduct;
         private Button btnAddProduct;
-        private ListBox listBox1;
         private TabControl tabControl1;
+        private DataGridView dataGridView1;
     }
 }

@@ -19,15 +19,15 @@ namespace project1
 
         #region SQL queries
         //카테고리 추가 sql
-        const string InsertSql = "INSERT INTO products (category, keyword_name) VALUES (@category, @keywordName)";
+        const string InsertSql = "INSERT INTO category (category, keyword_name) VALUES (@category, @keywordName)";
         //카테고리 삭제 sql
-        const string DeleteSql = "DELETE FROM products WHERE keyword_name = @keywordName";
+        const string DeleteSql = "DELETE FROM category WHERE keyword_name = @keywordName";
         //카테고리 검사 sql
-        const string checkSql = "SELECT COUNT(*) FROM products WHERE category = @category AND keyword_name = @keywordName";
+        const string checkSql = "SELECT COUNT(*) FROM category WHERE category = @category AND keyword_name = @keywordName";
         //카테고리 가져오기 sql
-        const string selectSql = "SELECT category, keyword_name FROM products WHERE keyword_name = @keywordName";
+        const string selectSql = "SELECT category, keyword_name FROM category WHERE keyword_name = @keywordName";
         //콤보박스에 카테고리 넣기 sql
-        const string comboBoxSql = "SELECT DISTINCT keyword_name FROM products";
+        const string comboBoxSql = "SELECT DISTINCT keyword_name FROM category";
         #endregion
 
         //카테고리 관련
@@ -52,6 +52,8 @@ namespace project1
                 cmd.Parameters.AddWithValue("@category", category);
                 cmd.Parameters.AddWithValue("@keywordName", keywordName);
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("추가 완료");
+                CategoryListUp(keywordName);
             }
         }
         
@@ -94,6 +96,7 @@ namespace project1
                 else
                 {
                     MessageBox.Show("데이터가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CategoryListUp(keywordName);
                 }
             }
         }

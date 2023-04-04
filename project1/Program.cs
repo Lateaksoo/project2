@@ -17,7 +17,7 @@ namespace project1
         public static int Uid { get=>_uid; set=>_uid = value; }
 
 
-        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
+        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
         private static SqlConnection conn;
 
 
@@ -40,7 +40,7 @@ namespace project1
             conn.Open();
 
             List();
-            TestDatabase();
+            //TestDatabase();
 
             Application.Run(new Login());
             if (_loginStatus == 1)
