@@ -70,7 +70,7 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
-            this.ProductGridView = new System.Windows.Forms.DataGridView();
+            //this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProductManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -482,7 +482,7 @@
             // 
             // tabProductManagement
             // 
-            this.tabProductManagement.Controls.Add(this.ProductGridView);
+            //this.tabProductManagement.Controls.Add(this.ProductGridView);
             this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
@@ -496,14 +496,14 @@
             // 
             // ProductGridView
             // 
-            this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ProductGridView.Location = new System.Drawing.Point(3, 3);
-            this.ProductGridView.Name = "ProductGridView";
-            this.ProductGridView.RowTemplate.Height = 25;
-            this.ProductGridView.Size = new System.Drawing.Size(743, 458);
-            this.ProductGridView.TabIndex = 5;
-            this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting);
+            //this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.ProductGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.ProductGridView.Location = new System.Drawing.Point(3, 3);
+            //this.ProductGridView.Name = "ProductGridView";
+            //this.ProductGridView.RowTemplate.Height = 25;
+            //this.ProductGridView.Size = new System.Drawing.Size(743, 458);
+            //this.ProductGridView.TabIndex = 5;
+            //this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting);
             // 
             // btnModifyProduct
             // 
@@ -565,7 +565,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

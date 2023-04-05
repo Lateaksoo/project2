@@ -63,7 +63,7 @@ namespace project1
                             txtProductImage.Text, comboBoxCategory.Text);
                 
                 this.Close();
-                form1.ProductDataViewLoad();
+                //form1.ProductDataViewLoad();
             }
         }
 
