@@ -44,6 +44,7 @@ namespace project1
         private void Form1_Load(object sender, EventArgs e)
         {
             DataViewLoad();//계정 불러오기
+            ProductDataViewLoad(); //상품 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
@@ -179,75 +180,76 @@ namespace project1
 
         private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정
         {
-            //int rowIndex = ProductGridView.CurrentCell.RowIndex;
-            //int columnIndex = ProductGridView.CurrentCell.ColumnIndex;
-            //if (rowIndex >= 0 && columnIndex >= 0)
-            //{
-            //    string name = ProductGridView.Rows[ProductGridView.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
-            //    int order = ProductGridView.CurrentCell.ColumnIndex;
-            //    DataGridViewCell cell = ProductGridView.Rows[rowIndex].Cells[columnIndex];
-            //    manager.UpdateProduct(name, cell.Value, order);
-            //    ProductDataViewLoad();
-            //}
+            int rowIndex = ProductGridView.CurrentCell.RowIndex;
+            int columnIndex = ProductGridView.CurrentCell.ColumnIndex;
+            if (rowIndex >= 0 && columnIndex >= 0)
+            {
+                string name = ProductGridView.Rows[ProductGridView.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                int order = ProductGridView.CurrentCell.ColumnIndex;
+                DataGridViewCell cell = ProductGridView.Rows[rowIndex].Cells[columnIndex];
+                manager.UpdateProduct(name, cell.Value, order);
+                ProductDataViewLoad();
+            }
         }
-        //public void ProductDataViewLoad() //상품 리스트보이기
-        //{
-        //    const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
+        public void ProductDataViewLoad() //상품 리스트보이기
+        {
+            const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
 
-        //    using SqlCommand cmd = new(sql, Program.Conn);
-        //    using SqlDataAdapter adapter = new(cmd);
-        //    DataSet ds = new();
-        //    adapter.Fill(ds);
+            using SqlCommand cmd = new(sql, Program.Conn);
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
 
-        //    if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
+            if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
 
-        //    // ProductGridView 에 데이터 연결!!
+            // ProductGridView 에 데이터 연결!!
 
-        //    ProductGridView.DataSource = ds.Tables[0];
-        //    ProductGridView.Columns[0].Width = 90;
-        //    ProductGridView.Columns[3].Width = 200;
+            ProductGridView.DataSource = ds.Tables[0];
+            ProductGridView.Columns[0].Width = 90;
+            ProductGridView.Columns[3].Width = 200;
 
-        //    ProductGridView.RowTemplate.Height = 100;
+            ProductGridView.RowTemplate.Height = 100;
 
-        //    ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  
-        //    ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
+            ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
-        //    //사진을 표시할 행 추가
-        //    DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
-        //    imageCol.HeaderText = "사진";
-        //    imageCol.Name = "imageCol";
-        //    ProductGridView.Columns.Add(imageCol);
-        //    imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
-        //    imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
-        //    ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
-        //    ProductGridView.Columns[5].Width = 100;
+            //사진을 표시할 행 추가
+            DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
+            imageCol.HeaderText = "사진";
+            imageCol.Name = "imageCol";
+            ProductGridView.Columns.Add(imageCol);
+            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
+            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
+            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
+            ProductGridView.Columns[5].Width = 100;
 
-        //}
+        }
 
 
-        //private void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol")
-        //    {
-        //        if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
-        //        string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
-        //        if (!string.IsNullOrEmpty(imagePath))
-        //        {
-        //            try
-        //            {
-        //                Image image = Image.FromFile(imagePath);
-        //                e.Value = image;
-        //                e.FormattingApplied = true;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
-        //                Console.WriteLine(ex.Message);
-        //            }
-        //        }
-        //    }
+        private void ProductGridView_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol")
+            {
+                if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
+                string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    try
+                    {
+                        Image image = Image.FromFile(imagePath);
+                        e.Value = image;
+                        e.FormattingApplied = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
+       
 
-        //}
 
         private void DataViewLoad()
         {
@@ -291,6 +293,11 @@ namespace project1
                 form = new Certification(_uid, id);
             }
             form.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }
