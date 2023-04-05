@@ -40,12 +40,13 @@
             this.txtProductImage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtDetail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(104, 372);
+            this.btnAddProduct.Location = new System.Drawing.Point(105, 488);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 6;
@@ -72,7 +73,7 @@
             // comboBoxCategory
             // 
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(153, 312);
+            this.comboBoxCategory.Location = new System.Drawing.Point(153, 313);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
             this.comboBoxCategory.TabIndex = 5;
@@ -80,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 181);
+            this.label2.Location = new System.Drawing.Point(26, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 5;
@@ -88,7 +89,7 @@
             // 
             // txtProductPrice
             // 
-            this.txtProductPrice.Location = new System.Drawing.Point(153, 178);
+            this.txtProductPrice.Location = new System.Drawing.Point(153, 175);
             this.txtProductPrice.Name = "txtProductPrice";
             this.txtProductPrice.Size = new System.Drawing.Size(100, 23);
             this.txtProductPrice.TabIndex = 2;
@@ -96,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 231);
+            this.label3.Location = new System.Drawing.Point(26, 222);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 7;
@@ -104,7 +105,7 @@
             // 
             // txtProductStock
             // 
-            this.txtProductStock.Location = new System.Drawing.Point(153, 228);
+            this.txtProductStock.Location = new System.Drawing.Point(153, 219);
             this.txtProductStock.Name = "txtProductStock";
             this.txtProductStock.Size = new System.Drawing.Size(100, 23);
             this.txtProductStock.TabIndex = 3;
@@ -112,7 +113,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 270);
+            this.label4.Location = new System.Drawing.Point(12, 271);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 15);
             this.label4.TabIndex = 9;
@@ -120,7 +121,7 @@
             // 
             // txtProductImage
             // 
-            this.txtProductImage.Location = new System.Drawing.Point(153, 267);
+            this.txtProductImage.Location = new System.Drawing.Point(153, 268);
             this.txtProductImage.Name = "txtProductImage";
             this.txtProductImage.Size = new System.Drawing.Size(100, 23);
             this.txtProductImage.TabIndex = 4;
@@ -129,7 +130,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 320);
+            this.label5.Location = new System.Drawing.Point(26, 321);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 11;
@@ -143,11 +144,21 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // txtDetail
+            // 
+            this.txtDetail.HideSelection = false;
+            this.txtDetail.Location = new System.Drawing.Point(12, 362);
+            this.txtDetail.Multiline = true;
+            this.txtDetail.Name = "txtDetail";
+            this.txtDetail.Size = new System.Drawing.Size(260, 116);
+            this.txtDetail.TabIndex = 28;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 450);
+            this.ClientSize = new System.Drawing.Size(294, 523);
+            this.Controls.Add(this.txtDetail);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -183,5 +194,6 @@
         private TextBox txtProductImage;
         private Label label5;
         private PictureBox pictureBox1;
+        private TextBox txtDetail;
     }
 }

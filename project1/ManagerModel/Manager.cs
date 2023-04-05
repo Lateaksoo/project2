@@ -35,7 +35,7 @@ namespace project1
         //상품 관련
         //---------------------------------------------------------------------------------------
         //상품 추가 sql
-        const string ProductInsertSql = "INSERT INTO Product (name, price, stock, image, category) VALUES (@name, @price, @stock, @image, @category)";
+        const string ProductInsertSql = "INSERT INTO Product (name, price, stock, image, category ,detail) VALUES (@name, @price, @stock, @image, @category , @detail)";
         //상품 중복 검사 sql
         const string ProductCheckSql = "SELECT COUNT(*) FROM Product WHERE name = @name";
         //상품 삭제 sql
@@ -146,7 +146,7 @@ namespace project1
 
         //상품 관련
         //---------------------------------------------------------------------------------------
-        public void AddProduct(string name, string price, string stock, string image, string category)
+        public void AddProduct(string name, string price, string stock, string image, string category, string detail)
         {
             using SqlCommand checkCmd = new SqlCommand(ProductCheckSql, Program.Conn);
             checkCmd.Parameters.AddWithValue("@name", name);
@@ -171,6 +171,7 @@ namespace project1
                 commandInsert.Parameters.AddWithValue("@stock", int.Parse(stock));
                 commandInsert.Parameters.AddWithValue("@image", image);
                 commandInsert.Parameters.AddWithValue("@category", category);
+                commandInsert.Parameters.AddWithValue("@detail", detail);
                 commandInsert.ExecuteNonQuery();
                 MessageBox.Show("추가 완료.");
             }
