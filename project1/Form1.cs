@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data;
+using System.Text;
 
 namespace project1
 {
@@ -41,6 +42,7 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            DataViewLoad();//계정 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
 
             // 콤보박스에 카테고리를 추가함
@@ -169,7 +171,51 @@ namespace project1
         {
 
         }
+        //---------------------------------계정관리---------------------------------------------------//
 
-      
+
+        private void DataViewLoad()
+        {
+            string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
+
+            using SqlCommand cmd = new(sql, Program.Conn);
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
+
+            // DataGridView 에 데이터 연결!!
+            dataGridView1.DataSource = ds.Tables[0];
+
+            dataGridView1.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
+            dataGridView1.Columns[0].Width = 90;
+            dataGridView1.Columns[2].Width = 200;
+
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
+            dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
+        }
+        //----------------------새로고침----------------------------------------------//
+        private void btn_load_Click(object sender, EventArgs e)
+        {
+            DataViewLoad();
+        }
+        private int _uid;
+        
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            int num = dataGridView1.CurrentCell.RowIndex;
+            int uid = int.Parse(dataGridView1.Rows[num].Cells[0].Value.ToString());
+            string id = dataGridView1.Rows[num].Cells[1].Value.ToString();
+
+            _uid= uid;
+            var form = Application.OpenForms["Certification"];
+
+            if (form == null)
+            {
+                form = new Certification(_uid,id);
+            }
+            form.Show();
+        }
     }
 }

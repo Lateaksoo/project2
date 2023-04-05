@@ -36,8 +36,8 @@ namespace project1
             List();
             
 
-            Application.Run(new Login());
-            if (_loginStatus == 1)
+            /*Application.Run(new Login());
+            if (_loginStatus == 1)*/
                 Application.Run(new Form1());
 
         }
