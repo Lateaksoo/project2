@@ -43,7 +43,7 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            ProductDataViewLoad();
+            DataViewLoad();//계정 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
@@ -191,8 +191,15 @@ namespace project1
             }
         }
         public void ProductDataViewLoad() //상품 리스트보이기
+
+        }
+        //---------------------------------계정관리---------------------------------------------------//
+
+
+        private void DataViewLoad()
         {
             const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
+            string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
 
             using SqlCommand cmd = new(sql, Program.Conn);
             using SqlDataAdapter adapter = new(cmd);
@@ -205,11 +212,34 @@ namespace project1
             ProductGridView.DataSource = ds.Tables[0];
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
+            dataGridView1.DataSource = ds.Tables[0];
+
+            dataGridView1.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
+            dataGridView1.Columns[0].Width = 90;
+            dataGridView1.Columns[2].Width = 200;
+
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
+            dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
+        }
+        //----------------------새로고침----------------------------------------------//
+        private void btn_load_Click(object sender, EventArgs e)
+        {
+            DataViewLoad();
+        }
+        private int _uid;
+        
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            int num = dataGridView1.CurrentCell.RowIndex;
+            int uid = int.Parse(dataGridView1.Rows[num].Cells[0].Value.ToString());
+            string id = dataGridView1.Rows[num].Cells[1].Value.ToString();
 
             ProductGridView.RowTemplate.Height = 100;
 
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
+            _uid= uid;
+            var form = Application.OpenForms["Certification"];
 
             //사진을 표시할 행 추가
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
@@ -221,32 +251,11 @@ namespace project1
             ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
             ProductGridView.Columns[5].Width = 100;
             
-        }
-      
-
-        private void ProductGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol" )
+            if (form == null)
             {
-                if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
-                string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    try
-                    {
-                        Image image = Image.FromFile(imagePath);
-                        e.Value = image;
-                        e.FormattingApplied = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
-                        Console.WriteLine(ex.Message);
-                    }
-                }
+                form = new Certification(_uid,id);
             }
+            form.Show();
         }
-
-        
-    }//end class
+    }
 }
