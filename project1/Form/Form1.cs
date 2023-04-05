@@ -42,7 +42,7 @@ namespace project1
            
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {//ㅇ
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
