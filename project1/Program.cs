@@ -34,10 +34,10 @@ namespace project1
             conn.Open();
 
             List();
-            
 
-            /*Application.Run(new Login());
-            if (_loginStatus == 1)*/
+
+            Application.Run(new Login());
+            if (_loginStatus == 1)
                 Application.Run(new Form1());
 
         }

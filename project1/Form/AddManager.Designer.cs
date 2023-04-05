@@ -83,21 +83,21 @@
             this.txt_id.Location = new System.Drawing.Point(101, 12);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(100, 23);
-            this.txt_id.TabIndex = 4;
+            this.txt_id.TabIndex = 1;
             // 
             // txt_pw
             // 
             this.txt_pw.Location = new System.Drawing.Point(101, 68);
             this.txt_pw.Name = "txt_pw";
             this.txt_pw.Size = new System.Drawing.Size(100, 23);
-            this.txt_pw.TabIndex = 5;
+            this.txt_pw.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(12, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(189, 23);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 2;
             this.button1.Text = "중복확인";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -107,7 +107,7 @@
             this.button2.Location = new System.Drawing.Point(12, 178);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(189, 23);
-            this.button2.TabIndex = 9;
+            this.button2.TabIndex = 7;
             this.button2.Text = "계정추가";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -117,7 +117,7 @@
             this.txt_pwcheck.Location = new System.Drawing.Point(101, 96);
             this.txt_pwcheck.Name = "txt_pwcheck";
             this.txt_pwcheck.Size = new System.Drawing.Size(100, 23);
-            this.txt_pwcheck.TabIndex = 10;
+            this.txt_pwcheck.TabIndex = 4;
             // 
             // label5
             // 
@@ -135,14 +135,14 @@
             this.txt_phonenum.Mask = "000-9000-0000";
             this.txt_phonenum.Name = "txt_phonenum";
             this.txt_phonenum.Size = new System.Drawing.Size(100, 23);
-            this.txt_phonenum.TabIndex = 13;
+            this.txt_phonenum.TabIndex = 5;
             // 
             // txt_email
             // 
             this.txt_email.Location = new System.Drawing.Point(101, 150);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(100, 23);
-            this.txt_email.TabIndex = 7;
+            this.txt_email.TabIndex = 6;
             // 
             // AddManager
             // 
@@ -162,6 +162,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.AddManager_Load);
             this.ResumeLayout(false);

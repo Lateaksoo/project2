@@ -92,6 +92,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Certification";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Certification";
             this.Load += new System.EventHandler(this.Certification_Load);
             this.ResumeLayout(false);

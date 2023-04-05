@@ -284,13 +284,13 @@ namespace project1
             int num = dataGridView1.CurrentCell.RowIndex;
             int uid = int.Parse(dataGridView1.Rows[num].Cells[0].Value.ToString());
             string id = dataGridView1.Rows[num].Cells[1].Value.ToString();
-
+            bool status = false;
             _uid = uid;
             var form = Application.OpenForms["Certification"];
 
             if (form == null)
             {
-                form = new Certification(_uid, id);
+                form = new Certification(_uid, id, status);
             }
             form.Show();
         }
@@ -300,5 +300,21 @@ namespace project1
 
         }
 
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            int num = dataGridView1.CurrentCell.RowIndex;
+            int uid = int.Parse(dataGridView1.Rows[num].Cells[0].Value.ToString());
+            string id = dataGridView1.Rows[num].Cells[1].Value.ToString();
+            bool status = true;
+
+            _uid = uid;
+            var form = Application.OpenForms["Certification"];
+
+            if (form == null)
+            {
+                form = new Certification(_uid, id,status);
+            }
+            form.Show();
+        }
     }
 }
