@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace project1
@@ -37,7 +38,8 @@ namespace project1
         const string ProductInsertSql = "INSERT INTO Product (name, price, stock, image, category) VALUES (@name, @price, @stock, @image, @category)";
         //상품 중복 검사 sql
         const string ProductCheckSql = "SELECT COUNT(*) FROM Product WHERE name = @name";
-
+        //상품 삭제 sql
+        const string ProductDeleteSql = "DELETE FROM Product WHERE name = @name and category = @category";
         #endregion
 
         //카테고리 관련
@@ -66,7 +68,7 @@ namespace project1
                 CategoryListUp(keywordName);
             }
         }
-        
+
         public void CategoryListUp(string keywordName) //카테고리 가져오기
         {
             using SqlCommand cmd = new SqlCommand(CategorySelectSql, Program.Conn);
@@ -144,7 +146,7 @@ namespace project1
 
         //상품 관련
         //---------------------------------------------------------------------------------------
-        public void AddProduct(string name, int price, int stock, string image, string category)
+        public void AddProduct(string name, string price, string stock, string image, string category)
         {
             using SqlCommand checkCmd = new SqlCommand(ProductCheckSql, Program.Conn);
             checkCmd.Parameters.AddWithValue("@name", name);
@@ -154,20 +156,51 @@ namespace project1
             if (count > 0)
             {
                 // 중복 값이 존재하는 경우
-                MessageBox.Show("이미 존재하는 제품 입니다.");
+                string ProductUpdateSql = "UPDATE product SET stock = stock + @stock WHERE name = @name";
+                using SqlCommand commandUpdate = new SqlCommand(ProductUpdateSql, Program.Conn);
+                commandUpdate.Parameters.AddWithValue("@name", name);
+                commandUpdate.Parameters.AddWithValue("@stock", int.Parse(stock));
+                commandUpdate.ExecuteNonQuery();
+                MessageBox.Show("재고 추가 완료.");
             }
             else
             {
                 using SqlCommand commandInsert = new SqlCommand(ProductInsertSql, Program.Conn);
                 commandInsert.Parameters.AddWithValue("@name", name);
-                commandInsert.Parameters.AddWithValue("@price", price);
-                commandInsert.Parameters.AddWithValue("@stock", stock);
+                commandInsert.Parameters.AddWithValue("@price", int.Parse(price));
+                commandInsert.Parameters.AddWithValue("@stock", int.Parse(stock));
                 commandInsert.Parameters.AddWithValue("@image", image);
                 commandInsert.Parameters.AddWithValue("@category", category);
                 commandInsert.ExecuteNonQuery();
+                MessageBox.Show("추가 완료.");
             }
 
+        } //상품 추가
+        public void DeleteProduct(string name, string category) //상품 삭제
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("상품을 입력해주세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (SqlCommand cmd = new SqlCommand(ProductDeleteSql, Program.Conn))
+            {
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@category", category);
+                int result = cmd.ExecuteNonQuery();
+                if (result == 0)
+                {
+                    MessageBox.Show("삭제할 데이터가 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("데이터가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+            }
         }
+
+       
 
     }//end class
 }

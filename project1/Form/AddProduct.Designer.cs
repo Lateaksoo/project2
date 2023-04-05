@@ -53,7 +53,7 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(148, 82);
+            this.txtProductName.Location = new System.Drawing.Point(153, 130);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(100, 23);
             this.txtProductName.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 85);
+            this.label1.Location = new System.Drawing.Point(26, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 2;
@@ -70,7 +70,7 @@
             // comboBoxCategory
             // 
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(148, 264);
+            this.comboBoxCategory.Location = new System.Drawing.Point(153, 312);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
             this.comboBoxCategory.TabIndex = 3;
@@ -78,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 133);
+            this.label2.Location = new System.Drawing.Point(26, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 5;
@@ -86,7 +86,7 @@
             // 
             // txtProductPrice
             // 
-            this.txtProductPrice.Location = new System.Drawing.Point(148, 130);
+            this.txtProductPrice.Location = new System.Drawing.Point(153, 178);
             this.txtProductPrice.Name = "txtProductPrice";
             this.txtProductPrice.Size = new System.Drawing.Size(100, 23);
             this.txtProductPrice.TabIndex = 4;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 183);
+            this.label3.Location = new System.Drawing.Point(26, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 7;
@@ -102,7 +102,7 @@
             // 
             // txtProductStock
             // 
-            this.txtProductStock.Location = new System.Drawing.Point(148, 180);
+            this.txtProductStock.Location = new System.Drawing.Point(153, 228);
             this.txtProductStock.Name = "txtProductStock";
             this.txtProductStock.Size = new System.Drawing.Size(100, 23);
             this.txtProductStock.TabIndex = 6;
@@ -110,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 222);
+            this.label4.Location = new System.Drawing.Point(26, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 15);
             this.label4.TabIndex = 9;
@@ -118,7 +118,7 @@
             // 
             // txtProductImage
             // 
-            this.txtProductImage.Location = new System.Drawing.Point(148, 219);
+            this.txtProductImage.Location = new System.Drawing.Point(153, 267);
             this.txtProductImage.Name = "txtProductImage";
             this.txtProductImage.Size = new System.Drawing.Size(100, 23);
             this.txtProductImage.TabIndex = 8;
@@ -126,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 272);
+            this.label5.Location = new System.Drawing.Point(26, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 11;
@@ -150,6 +150,7 @@
             this.Controls.Add(this.btnAddProduct);
             this.Name = "AddProduct";
             this.Text = "AddProduct";
+            this.Load += new System.EventHandler(this.AddProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,9 +15,9 @@ namespace project1
         private ProductManagerModel productManagerModel;
         private Manager manager;
 
-        private string productName;          
-        private int productPrice;         
-        private int productStock;         
+        private string productName;
+        private int productPrice;
+        private int productStock;
         private string productImage;
         private string category;
 
@@ -33,10 +33,36 @@ namespace project1
             category = productManagerModel.Category;
 
         }
+        private void AddProduct_Load(object sender, EventArgs e)
+        {
+            DataTable categoryTable = manager.GetCategoryComboBox();
+
+            // 콤보박스에 카테고리를 추가함
+            foreach (DataRow row in categoryTable.Rows)
+            {
+                comboBoxCategory.Items.Add(row["keyword_name"]);
+            }
+
+            //기본으로 선택되어 있는 값
+            comboBoxCategory.SelectedIndex = 0;
+        }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-
+            if (txtProductName.Text == "") MessageBox.Show("상품명을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (txtProductStock.Text == "") MessageBox.Show("재고량을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (txtProductPrice.Text == "") MessageBox.Show("가격을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (comboBoxCategory.Text == "") MessageBox.Show("카테고리를 선택하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                manager.AddProduct(txtProductName.Text,
+                            txtProductPrice.Text,
+                            txtProductStock.Text,
+                            txtProductImage.Text, comboBoxCategory.Text);
+                this.Close();
+            }
         }
+
+
     }
 }

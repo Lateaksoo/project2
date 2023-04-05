@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data;
+using System.Text;
 
 namespace project1
 {
@@ -41,8 +42,8 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            ProductDataViewLoad();
             DataTable categoryTable = manager.GetCategoryComboBox();
-
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
             {
@@ -171,14 +172,45 @@ namespace project1
 
         private void btnDeleteProduct_Click(object sender, EventArgs e) //상품 삭제
         {
-
+            DeleteProduct deleteProduct = new DeleteProduct();
+            deleteProduct.Show();
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정
         {
 
         }
+        private void ProductDataViewLoad() //상품 리스트보이기
+        {
+            string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진] , category [카테고리] FROM Product";
 
+            using SqlCommand cmd = new(sql, Program.Conn);
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
+
+            // DataGridView 에 데이터 연결!!
+            ProductGridView.DataSource = ds.Tables[0];
+
+            ProductGridView.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
+            ProductGridView.Columns[0].Width = 90;
+            ProductGridView.Columns[3].Width = 200;
+
+            ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
+            ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
+
+            // LOG 출력
+            //StringBuilder builder = new("");
+            //foreach (DataGridViewColumn col in ProductGridView.Columns)
+            //{
+            //    builder.Append($"{col.HeaderText} | ");
+            //}
+            //builder.Append("\n");
+            //builder.Append($"LOAD: {ProductGridView.RowCount}행 x {ProductGridView.ColumnCount}열");
+            //LOG(builder.ToString());
+        }
 
     }
 }

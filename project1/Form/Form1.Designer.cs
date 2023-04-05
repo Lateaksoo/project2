@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -66,17 +66,17 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
+            this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProductManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -311,17 +311,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Right;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(231, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(515, 539);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -434,7 +434,7 @@
             // 
             // tabProductManagement
             // 
-            this.tabProductManagement.Controls.Add(this.dataGridView1);
+            this.tabProductManagement.Controls.Add(this.ProductGridView);
             this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
@@ -445,6 +445,16 @@
             this.tabProductManagement.TabIndex = 0;
             this.tabProductManagement.Text = "상품관리";
             this.tabProductManagement.UseVisualStyleBackColor = true;
+            // 
+            // ProductGridView
+            // 
+            this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ProductGridView.Location = new System.Drawing.Point(3, 3);
+            this.ProductGridView.Name = "ProductGridView";
+            this.ProductGridView.RowTemplate.Height = 25;
+            this.ProductGridView.Size = new System.Drawing.Size(743, 458);
+            this.ProductGridView.TabIndex = 5;
             // 
             // btnModifyProduct
             // 
@@ -489,16 +499,6 @@
             this.tabControl1.Size = new System.Drawing.Size(757, 573);
             this.tabControl1.TabIndex = 0;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 458);
-            this.dataGridView1.TabIndex = 5;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -514,8 +514,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -561,6 +561,6 @@
         private Button btnDeleteProduct;
         private Button btnAddProduct;
         private TabControl tabControl1;
-        private DataGridView dataGridView1;
+        private DataGridView ProductGridView;
     }
 }
