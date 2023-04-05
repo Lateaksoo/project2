@@ -195,12 +195,28 @@ namespace project1
                 else
                 {
                     MessageBox.Show("데이터가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
                 }
             }
         }
 
-       
+        public void UpdateProduct(string name, object value, int order) //상품 수정
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Program.Conn;
+            order = order + 2; //uid가 첫번째에 있어서 2를 더함
+            // 선택된 셀의 열 이름 구하기
+            cmd.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Product' AND ORDINAL_POSITION = @order";
+            cmd.Parameters.AddWithValue("@order", order);
+
+            string columnName = cmd.ExecuteScalar().ToString();
+
+            //셀 업데이트 하기
+            cmd.CommandText = $"UPDATE Product SET [{columnName}] = @value WHERE name = @name";
+            cmd.Parameters.AddWithValue("@value", value);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("수정완료.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
     }//end class
 }

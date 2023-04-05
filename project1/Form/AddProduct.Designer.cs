@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtProductImage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddProduct
@@ -46,7 +48,7 @@
             this.btnAddProduct.Location = new System.Drawing.Point(104, 372);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
-            this.btnAddProduct.TabIndex = 0;
+            this.btnAddProduct.TabIndex = 6;
             this.btnAddProduct.Text = "상품 추가";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
@@ -73,7 +75,7 @@
             this.comboBoxCategory.Location = new System.Drawing.Point(153, 312);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
-            this.comboBoxCategory.TabIndex = 3;
+            this.comboBoxCategory.TabIndex = 5;
             // 
             // label2
             // 
@@ -89,7 +91,7 @@
             this.txtProductPrice.Location = new System.Drawing.Point(153, 178);
             this.txtProductPrice.Name = "txtProductPrice";
             this.txtProductPrice.Size = new System.Drawing.Size(100, 23);
-            this.txtProductPrice.TabIndex = 4;
+            this.txtProductPrice.TabIndex = 2;
             // 
             // label3
             // 
@@ -105,7 +107,7 @@
             this.txtProductStock.Location = new System.Drawing.Point(153, 228);
             this.txtProductStock.Name = "txtProductStock";
             this.txtProductStock.Size = new System.Drawing.Size(100, 23);
-            this.txtProductStock.TabIndex = 6;
+            this.txtProductStock.TabIndex = 3;
             // 
             // label4
             // 
@@ -121,7 +123,8 @@
             this.txtProductImage.Location = new System.Drawing.Point(153, 267);
             this.txtProductImage.Name = "txtProductImage";
             this.txtProductImage.Size = new System.Drawing.Size(100, 23);
-            this.txtProductImage.TabIndex = 8;
+            this.txtProductImage.TabIndex = 4;
+            this.txtProductImage.Leave += new System.EventHandler(this.txtProductImage_Leave);
             // 
             // label5
             // 
@@ -132,11 +135,20 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "카테고리";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(26, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(227, 108);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtProductImage);
@@ -151,6 +163,7 @@
             this.Name = "AddProduct";
             this.Text = "AddProduct";
             this.Load += new System.EventHandler(this.AddProduct_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +182,6 @@
         private Label label4;
         private TextBox txtProductImage;
         private Label label5;
+        private PictureBox pictureBox1;
     }
 }

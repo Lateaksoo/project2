@@ -33,6 +33,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -50,6 +52,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(100, 23);
             this.txtProductName.TabIndex = 3;
+            this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
             // 
             // label5
             // 
@@ -78,11 +81,20 @@
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(29, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(227, 108);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // DeleteProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 283);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxCategory);
@@ -91,6 +103,7 @@
             this.Name = "DeleteProduct";
             this.Text = "DeleteProduct";
             this.Load += new System.EventHandler(this.DeleteProduct_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +116,6 @@
         private Label label5;
         private ComboBox comboBoxCategory;
         private Button btnDeleteProduct;
+        private PictureBox pictureBox1;
     }
 }
