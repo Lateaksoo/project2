@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btn_load = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -70,10 +70,10 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
+            this.ProductGridView = new System.Windows.Forms.DataGridView();
             this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -81,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProductManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -358,17 +359,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Right;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(231, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(515, 539);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -481,10 +482,10 @@
             // 
             // tabProductManagement
             // 
+            this.tabProductManagement.Controls.Add(this.ProductGridView);
             this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
-            this.tabProductManagement.Controls.Add(this.listBox1);
             this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
             this.tabProductManagement.Name = "tabProductManagement";
             this.tabProductManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -493,9 +494,19 @@
             this.tabProductManagement.Text = "상품관리";
             this.tabProductManagement.UseVisualStyleBackColor = true;
             // 
+            // ProductGridView
+            // 
+            this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ProductGridView.Location = new System.Drawing.Point(3, 3);
+            this.ProductGridView.Name = "ProductGridView";
+            this.ProductGridView.RowTemplate.Height = 25;
+            this.ProductGridView.Size = new System.Drawing.Size(743, 458);
+            this.ProductGridView.TabIndex = 5;
+            // 
             // btnModifyProduct
             // 
-            this.btnModifyProduct.Location = new System.Drawing.Point(299, 467);
+            this.btnModifyProduct.Location = new System.Drawing.Point(521, 489);
             this.btnModifyProduct.Name = "btnModifyProduct";
             this.btnModifyProduct.Size = new System.Drawing.Size(106, 23);
             this.btnModifyProduct.TabIndex = 4;
@@ -505,7 +516,7 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(172, 467);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(304, 489);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteProduct.TabIndex = 3;
@@ -515,22 +526,13 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(66, 467);
+            this.btnAddProduct.Location = new System.Drawing.Point(77, 489);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 2;
             this.btnAddProduct.Text = "상품 추가";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(6, 6);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(740, 424);
-            this.listBox1.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -562,6 +564,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -607,7 +610,6 @@
         private Button btnModifyProduct;
         private Button btnDeleteProduct;
         private Button btnAddProduct;
-        private ListBox listBox1;
         private TabControl tabControl1;
         private Button btn_load;
         private Button btn_delete;

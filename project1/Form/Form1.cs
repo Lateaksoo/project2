@@ -23,7 +23,7 @@ namespace project1
         private string gender;
         private string timeUnit;
         private string keywordName;
-        private string productName;
+        private string searchProductName;
 
         public Form1()
         {
@@ -37,14 +37,13 @@ namespace project1
             gender = productManagerModel.Gender;
             timeUnit = productManagerModel.TimeUnit;
             keywordName = productManagerModel.KeywordName;
-            productName = productManagerModel.ProductName;
+            searchProductName = productManagerModel.SearchProductName;
 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             DataViewLoad();//계정 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
-
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
             {
@@ -84,7 +83,7 @@ namespace project1
                 return; // 메소드 실행 중지
             }
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
         }
@@ -117,12 +116,13 @@ namespace project1
             keywordName = productManagerModel.KeywordName;
             category = productManagerModel.Category;
         }
+       
 
         private void btnMonth_Click(object sender, EventArgs e) //월간 버튼
         {
             timeUnit = "month"; //월별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -132,7 +132,7 @@ namespace project1
         {
             timeUnit = "week"; //주별로 설정
 
-            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, productName));
+            dynamic result = JsonConvert.DeserializeObject(naverSearch.naver(category, startDate, endDate, gender, age, timeUnit, keywordName, searchProductName));
             chart1.Series.Clear();
             manager.CreateChart(chart1, $"{comboBoxCategory.Text}\n {comboBoxSex.Text}성\n {age}대\n, 검색 비율", result);
 
@@ -140,7 +140,7 @@ namespace project1
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            productName = txtSearch.Text;
+            searchProductName = txtSearch.Text;
         }
 
         //---------------------------------------------------------------------------------
@@ -148,10 +148,17 @@ namespace project1
         private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
         {
             manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
+            manager.CategoryListUp(txtKeywordName.Text);
+            comboBoxCategory.Items.Add(txtKeywordName.Text);
+            txtCategory.Text = "";
+            txtKeywordName.Text = "";
         }
         private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
         {
             manager.DeleteCategory(txtDeleteKeyName.Text);
+            manager.CategoryListUp(txtDeleteKeyName.Text);
+            comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
+            txtDeleteKeyName.Text = "";
         }
 
 
@@ -159,12 +166,14 @@ namespace project1
         //상품 관리 탭
         private void btnAddProduct_Click(object sender, EventArgs e) //상품 추가
         {
-
+            AddProduct addProduct = new AddProduct();
+            addProduct.Show();
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e) //상품 삭제
         {
-
+            DeleteProduct deleteProduct = new DeleteProduct();
+            deleteProduct.Show();
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정

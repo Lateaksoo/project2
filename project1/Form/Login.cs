@@ -81,11 +81,13 @@ namespace project1
             if (ide == 0)
             {
                 MessageBox.Show("잘못된 ID 입니다.");
+                txt_id.Focus(); //아이디 입력 창으로 커서 이동
                 return;
             }
             if (pwe == 0)
             {
                 MessageBox.Show("잘못된 비밀번호 입니다.");
+                txt_pw.Focus(); //비밀번호 입력 창으로 커서 이동
                 return;
             }
         }
