@@ -504,7 +504,7 @@
             this.ProductGridView.RowTemplate.Height = 25;
             this.ProductGridView.Size = new System.Drawing.Size(743, 418);
             this.ProductGridView.TabIndex = 5;
-            this.ProductGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductGridView_CellFormatting_1);
+            this.ProductGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellClick);
             // 
             // btnModifyProduct
             // 

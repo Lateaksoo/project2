@@ -213,42 +213,9 @@ namespace project1
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
-            //사진을 표시할 행 추가
-            DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
-            imageCol.HeaderText = "사진";
-            imageCol.Name = "imageCol";
-            ProductGridView.Columns.Add(imageCol);
-            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
-            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
-            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
-            ProductGridView.Columns[5].Width = 100;
+           
 
         }
-
-
-        private void ProductGridView_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol")
-            {
-                if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
-                string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    try
-                    {
-                        Image image = Image.FromFile(imagePath);
-                        e.Value = image;
-                        e.FormattingApplied = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-            }
-        }
-       
 
 
         private void DataViewLoad()
@@ -300,5 +267,9 @@ namespace project1
 
         }
 
+        private void ProductGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
