@@ -39,7 +39,7 @@ namespace project1
             timeUnit = productManagerModel.TimeUnit;
             keywordName = productManagerModel.KeywordName;
             searchProductName = productManagerModel.SearchProductName;
-           
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {//ㅇ
@@ -208,16 +208,45 @@ namespace project1
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
 
-            ProductGridView.RowTemplate.Height = 100;
-
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
-           
-
         }
 
+        private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 선택된 셀의 포함된 행의 이름을 가져옵니다.
+            int rowIndex = e.RowIndex;
+            if (rowIndex == -1) return;
+            string selectedName = ProductGridView.Rows[rowIndex].Cells["상품명"].Value.ToString();
 
+            // 상품 정보를 가져오는 SQL 쿼리를 작성합니다.
+            string selectQuery = $"SELECT * FROM Product WHERE name = '{selectedName}'";
+
+            // 데이터베이스에서 상품 정보를 가져옵니다.
+            using SqlCommand cmd = new(selectQuery, Program.Conn);
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds, "Product");
+
+            // 가져온 상품 정보를 DetailProduct 폼에 전달합니다.
+            if (ds.Tables["Product"].Rows.Count > 0)
+            {
+                DataRow row = ds.Tables["Product"].Rows[0];
+                string name = row["name"].ToString();
+                int price = Convert.ToInt32(row["price"]);
+                int stock = Convert.ToInt32(row["stock"]);
+                string image = row["image"].ToString();
+                string category = row["category"].ToString();
+                string detail = row["detail"].ToString();
+
+                DetailProduct detailProduct = new DetailProduct(name, price, stock, image, category, detail);
+                detailProduct.ShowDialog();
+            }
+        }
+
+        //회원관리
+        //-----------------------------------------------------------------------------------------------
         private void DataViewLoad()
         {
             string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
@@ -264,12 +293,24 @@ namespace project1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // 셀을 누른 위치의 행 번호를 가져옵니다.
+            int rowIndex = e.RowIndex;
 
-        }
+            // 선택된 행이 없는 경우, 이벤트 처리를 중단합니다.
+            if (rowIndex == -1) return;
 
-        private void ProductGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+            // 선택된 행의 데이터를 가져옵니다.
+            DataGridViewRow row = ProductGridView.Rows[rowIndex];
+            string name = row.Cells["상품명"].Value.ToString();
+            int price = Convert.ToInt32(row.Cells["가격"].Value);
+            int stock = Convert.ToInt32(row.Cells["재고"].Value);
+            string image = row.Cells["사진경로"].Value.ToString();
+            string category = row.Cells["카테고리"].Value.ToString();
+            string detail = row.Cells["상세설명"].Value.ToString();
 
+            // 새로운 폼을 만들고, 선택된 행의 데이터를 전달합니다.
+            DetailProduct detailProduct = new DetailProduct(name, price, stock, image, category, detail);
+            detailProduct.ShowDialog();
         }
     }
 }
