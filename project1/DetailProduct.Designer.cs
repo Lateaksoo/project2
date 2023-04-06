@@ -30,7 +30,6 @@
         {
             this.pbDetailImage = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,10 +37,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtimageRoot = new System.Windows.Forms.TextBox();
             this.txtDetail = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.btnFindIamge = new System.Windows.Forms.Button();
+            this.txtProductImage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbDetailImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,15 +61,6 @@
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 23;
             this.label5.Text = "카테고리";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(258, 174);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 15);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "이미지 경로";
             // 
             // label3
             // 
@@ -129,15 +120,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtimageRoot
-            // 
-            this.txtimageRoot.Location = new System.Drawing.Point(258, 192);
-            this.txtimageRoot.Multiline = true;
-            this.txtimageRoot.Name = "txtimageRoot";
-            this.txtimageRoot.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtimageRoot.Size = new System.Drawing.Size(187, 54);
-            this.txtimageRoot.TabIndex = 25;
-            // 
             // txtDetail
             // 
             this.txtDetail.HideSelection = false;
@@ -165,18 +147,35 @@
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
             this.comboBoxCategory.TabIndex = 29;
             // 
+            // btnFindIamge
+            // 
+            this.btnFindIamge.Location = new System.Drawing.Point(365, 212);
+            this.btnFindIamge.Name = "btnFindIamge";
+            this.btnFindIamge.Size = new System.Drawing.Size(80, 23);
+            this.btnFindIamge.TabIndex = 31;
+            this.btnFindIamge.Text = "사진 찾기";
+            this.btnFindIamge.UseVisualStyleBackColor = true;
+            this.btnFindIamge.Click += new System.EventHandler(this.btnFindIamge_Click);
+            // 
+            // txtProductImage
+            // 
+            this.txtProductImage.Location = new System.Drawing.Point(258, 183);
+            this.txtProductImage.Name = "txtProductImage";
+            this.txtProductImage.Size = new System.Drawing.Size(187, 23);
+            this.txtProductImage.TabIndex = 30;
+            // 
             // DetailProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 450);
+            this.Controls.Add(this.btnFindIamge);
+            this.Controls.Add(this.txtProductImage);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtDetail);
-            this.Controls.Add(this.txtimageRoot);
             this.Controls.Add(this.pbDetailImage);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.label2);
@@ -197,7 +196,6 @@
 
         private PictureBox pbDetailImage;
         private Label label5;
-        private Label label4;
         private Label label3;
         private TextBox txtStock;
         private Label label2;
@@ -205,9 +203,10 @@
         private Label label1;
         private TextBox txtName;
         private Button btnSave;
-        private TextBox txtimageRoot;
         private TextBox txtDetail;
         private Button btnEdit;
         private ComboBox comboBoxCategory;
+        private Button btnFindIamge;
+        private TextBox txtProductImage;
     }
 }

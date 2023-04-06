@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Diagnostics;
 
 namespace project1
 {
@@ -215,6 +216,25 @@ namespace project1
             cmdUpdate.Parameters.AddWithValue("@detail", detail);
             cmdUpdate.ExecuteNonQuery();
             MessageBox.Show("수정 완료");
+        }
+
+        public string FindInamge() //사진 찾기
+        {
+            //파일 선택창에서 사진 선택
+            OpenFileDialog openFileDialog1;
+            openFileDialog1 = new OpenFileDialog();
+            string filepath = "";
+
+            // 이미지 파일 필터 설정
+            openFileDialog1.Filter = "이미지 파일(*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //사진 경로 가져오기 --> 경로 반환
+                filepath = openFileDialog1.FileName;   // 선택한 파일의 전체경로
+            }
+            // 취소누르면 선택안되게 함
+            return filepath;
         }
 
     }//end class

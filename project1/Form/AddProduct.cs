@@ -60,14 +60,9 @@ namespace project1
                     targetDirectory = Path.GetDirectoryName(targetDirectory);
                 }
 
-                // 추가된 상품의 이미지 경로를 프로그램 내의 상대 경로로 변경
-                
-                
+                // 추가된 상품의 이미지 경로를 프로그램 내의 폴더로 변경
                 string targetImagePath = targetDirectory + "/" + "Image/" + targetFileName;
                 
-
-                //string targetImagePath = Path.Combine(targetDirectory, targetFileName); // 파일 경로 생성
-                                                                                        
                 if (File.Exists(targetImagePath)) // 이미 파일이 존재하는지 확인
                 {
                     // 덮어쓰기 여부를 물어봄
@@ -127,6 +122,11 @@ namespace project1
                 txtProductImage.Text = "";
                 return;
             }
+        }
+
+        private void btnFindIamge_Click(object sender, EventArgs e)
+        {
+            txtProductImage.Text = manager.FindInamge();
         }
     }
 }

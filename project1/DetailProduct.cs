@@ -55,7 +55,7 @@ namespace project1
             txtName.Text = _name;
             txtPrice.Text = _price.ToString();
             txtStock.Text = _stock.ToString();
-            txtimageRoot.Text = _image.ToString();
+            txtProductImage.Text = _image.ToString();
             pbDetailImage.Image = Image.FromFile(_image);
             comboBoxCategory.Text = _category;
             txtDetail.Text = _detail;
@@ -63,34 +63,42 @@ namespace project1
             txtName.Enabled = false;
             txtPrice.Enabled = false;
             txtStock.Enabled = false;
-            txtimageRoot.Enabled = false;
+            txtProductImage.Enabled = false;
             comboBoxCategory.Enabled = false;
             txtDetail.Enabled = false;
+            btnFindIamge.Enabled = false; // 버튼 비활성화
 
         }
 
         private void btnEdit_Click(object sender, EventArgs e) //편집 누르면 텍스트 활성화 
         {
+            btnFindIamge.Enabled = true; // 버튼 활성화
             txtName.Enabled = true;
             txtPrice.Enabled = true;
             txtStock.Enabled = true;
-            txtimageRoot.Enabled = true;
+            txtProductImage.Enabled = true;
             comboBoxCategory.Enabled = true;
             txtDetail.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e) //저장 버튼을 누르면 데이터베이스에 저장
         {
+            btnFindIamge.Enabled = false; // 버튼 비활성화
             txtName.Enabled = false;
             txtPrice.Enabled = false;
             txtStock.Enabled = false;
-            txtimageRoot.Enabled = false;
+            txtProductImage.Enabled = false;
             comboBoxCategory.Enabled = false;
             txtDetail.Enabled = false;
 
-            manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtimageRoot.Text, comboBoxCategory.Text, txtDetail.Text);
+            manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtProductImage.Text, comboBoxCategory.Text, txtDetail.Text);
             this.Close();
             form1.ProductDataViewLoad();
+        }
+
+        private void btnFindIamge_Click(object sender, EventArgs e)
+        {
+            txtProductImage.Text = manager.FindInamge();
         }
     }
 }

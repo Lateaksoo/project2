@@ -36,11 +36,11 @@
             this.txtProductPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtProductStock = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtProductImage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtDetail = new System.Windows.Forms.TextBox();
+            this.btnFindIamge = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             // comboBoxCategory
             // 
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(153, 313);
+            this.comboBoxCategory.Location = new System.Drawing.Point(153, 260);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
             this.comboBoxCategory.TabIndex = 5;
@@ -110,27 +110,18 @@
             this.txtProductStock.Size = new System.Drawing.Size(100, 23);
             this.txtProductStock.TabIndex = 3;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 271);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 15);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "이미지 경로";
-            // 
             // txtProductImage
             // 
-            this.txtProductImage.Location = new System.Drawing.Point(153, 268);
+            this.txtProductImage.Location = new System.Drawing.Point(12, 302);
             this.txtProductImage.Name = "txtProductImage";
-            this.txtProductImage.Size = new System.Drawing.Size(100, 23);
+            this.txtProductImage.Size = new System.Drawing.Size(143, 23);
             this.txtProductImage.TabIndex = 4;
             this.txtProductImage.Leave += new System.EventHandler(this.txtProductImage_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 321);
+            this.label5.Location = new System.Drawing.Point(26, 268);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 11;
@@ -153,15 +144,25 @@
             this.txtDetail.Size = new System.Drawing.Size(260, 116);
             this.txtDetail.TabIndex = 28;
             // 
+            // btnFindIamge
+            // 
+            this.btnFindIamge.Location = new System.Drawing.Point(173, 301);
+            this.btnFindIamge.Name = "btnFindIamge";
+            this.btnFindIamge.Size = new System.Drawing.Size(80, 23);
+            this.btnFindIamge.TabIndex = 29;
+            this.btnFindIamge.Text = "사진 찾기";
+            this.btnFindIamge.UseVisualStyleBackColor = true;
+            this.btnFindIamge.Click += new System.EventHandler(this.btnFindIamge_Click);
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 523);
+            this.Controls.Add(this.btnFindIamge);
             this.Controls.Add(this.txtDetail);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtProductImage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtProductStock);
@@ -190,10 +191,10 @@
         private TextBox txtProductPrice;
         private Label label3;
         private TextBox txtProductStock;
-        private Label label4;
         private TextBox txtProductImage;
         private Label label5;
         private PictureBox pictureBox1;
         private TextBox txtDetail;
+        private Button btnFindIamge;
     }
 }
