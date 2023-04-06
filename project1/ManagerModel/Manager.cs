@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
+using Chart = System.Windows.Forms.DataVisualization.Charting.Chart;
+using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace project1
 {
@@ -114,7 +118,7 @@ namespace project1
                 }
             }
         }
-        public System.Data.DataTable GetCategoryComboBox() //카테고리 데이터를 데이터테이블로 반환하기
+        public DataTable GetCategoryComboBox() //카테고리 데이터를 데이터테이블로 반환하기
         {
             // 테이블에서 카테고리를 가져와서 DataTable로 반환함
             using (SqlCommand cmd = new SqlCommand(comboBoxSql, Program.Conn))
@@ -244,11 +248,43 @@ namespace project1
 
         public void SaveSqlToExcel() //엑셀에 저장하기
         {
-            DataTable productTable = GetProductTable();
-            DataTable managerTable = GetManagerTable();
-            DataTable categoryTable = GetCategoryTable();
+            DataTable productTable = GetProductTable();   //상품테이블
+            DataTable managerTable = GetManagerTable();   //메니저테이블
+            DataTable categoryTable = GetCategoryTable(); //카테고리 테이블 
 
+            Application excel = new Application();
+            Workbook productWorkbook = excel.Workbooks.Add();  //상품 엑셀파일 만들기
+            Workbook managerWorkbook = excel.Workbooks.Add();  //매니저 엑셀파일 만들기
+            Workbook categoryWorkbook = excel.Workbooks.Add(); //카테고리 엑셀파일 만들기
 
+            // 현재 실행 파일이 있는 디렉토리 경로
+            string baseDirectory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+
+            // 경로에서 상위 디렉토리를 추출할 횟수
+            int count = 3;
+
+            // 경로에서 필요한 부분만 추출
+            for (int i = 0; i < count; i++)
+            {
+                baseDirectory = Path.GetDirectoryName(baseDirectory);
+            }
+            string ExcelFilePath = Path.Combine(baseDirectory, "TableExcel"); //테이블엑셀 폴더로 경로 지정
+
+            string productFilePath = Path.Combine(ExcelFilePath, "Product.xlsx"); // Product 엑셀 파일 경로
+            string managerFilePath = Path.Combine(ExcelFilePath, "Manager.xlsx"); // Manager 엑셀 파일 경로
+            string categoryFilePath = Path.Combine(ExcelFilePath, "Category.xlsx"); // Category 엑셀 파일 경로
+
+            //기존 파일 삭제
+            File.Delete(productFilePath);
+            File.Delete(managerFilePath);
+            File.Delete(categoryFilePath);
+            
+            //새 파일 저장
+            productWorkbook.SaveAs(productFilePath);
+            managerWorkbook.SaveAs(managerFilePath);
+            categoryWorkbook.SaveAs(categoryFilePath);
+
+            excel.Quit();
         }
 
         private DataTable GetCategoryTable()//카테고리 정보 데이터테이블로 가져오기

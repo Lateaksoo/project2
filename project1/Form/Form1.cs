@@ -8,6 +8,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data;
 using System.Text;
 using System.Drawing.Imaging;
+using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
+using CheckBox = System.Windows.Forms.CheckBox;
+using Application = System.Windows.Forms.Application;
 
 namespace project1
 {
@@ -307,6 +311,11 @@ namespace project1
         private void label12_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            manager.SaveSqlToExcel();
         }
     }//end class
 }
