@@ -14,7 +14,7 @@ namespace project1
     public partial class Form1 : Form
     {
         NaverSearch naverSearch = new NaverSearch();
-
+        List<ProductManagerModel> products = new List<ProductManagerModel>();
         private ProductManagerModel productManagerModel;
         private Manager manager;
         private string category;
@@ -39,13 +39,12 @@ namespace project1
             timeUnit = productManagerModel.TimeUnit;
             keywordName = productManagerModel.KeywordName;
             searchProductName = productManagerModel.SearchProductName;
-
+           
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {//ㅇ
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
-            CategoryGridViewLoad(); //카테고리 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
@@ -155,7 +154,6 @@ namespace project1
             comboBoxCategory.Items.Add(txtKeywordName.Text);
             txtCategory.Text = "";
             txtKeywordName.Text = "";
-            CategoryGridViewLoad();//카테고리 정보 새로고침
         }
         private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
         {
@@ -163,17 +161,8 @@ namespace project1
             manager.CategoryListUp(txtDeleteKeyName.Text);
             comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
             txtDeleteKeyName.Text = "";
-            CategoryGridViewLoad(); //카테고리 정보 새로고침
         }
-        private void CategoryGridViewLoad() //카테고리 정보 불러오기
-        {
-            DataTable categoryTable = manager.GetCategoryComboBox();
-            CategoryGridView.DataSource = categoryTable;
 
-            CategoryGridView.Columns["keyword_name"].HeaderText = "카테고리";
-            CategoryGridView.Columns["category"].HeaderText = "카테고리 번호";
-           
-        }
 
         //---------------------------------------------------------------------------------
         //상품 관리 탭
@@ -189,11 +178,24 @@ namespace project1
             deleteProduct.Show();
         }
 
+        private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정
+        {
+            int rowIndex = ProductGridView.CurrentCell.RowIndex;
+            int columnIndex = ProductGridView.CurrentCell.ColumnIndex;
+            if (rowIndex >= 0 && columnIndex >= 0)
+            {
+                string name = ProductGridView.Rows[ProductGridView.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                int order = ProductGridView.CurrentCell.ColumnIndex;
+                DataGridViewCell cell = ProductGridView.Rows[rowIndex].Cells[columnIndex];
+                manager.UpdateProduct(name, cell.Value, order);
+                ProductDataViewLoad();
+            }
+        }
         public void ProductDataViewLoad() //상품 리스트보이기
         {
-            const string Productsql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
+            const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
 
-            using SqlCommand cmd = new(Productsql, Program.Conn);
+            using SqlCommand cmd = new(sql, Program.Conn);
             using SqlDataAdapter adapter = new(cmd);
             DataSet ds = new();
             adapter.Fill(ds);
@@ -206,45 +208,49 @@ namespace project1
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
 
+            ProductGridView.RowTemplate.Height = 100;
+
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
+            //사진을 표시할 행 추가
+            DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
+            imageCol.HeaderText = "사진";
+            imageCol.Name = "imageCol";
+            ProductGridView.Columns.Add(imageCol);
+            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
+            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
+            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
+            ProductGridView.Columns[5].Width = 100;
+
         }
 
-        private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) //더블 클릭하면 상세보기
+
+        private void ProductGridView_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // 선택된 셀의 포함된 행의 이름을 가져옵니다.
-            int rowIndex = e.RowIndex;
-            if (rowIndex == -1) return;
-            string selectedName = ProductGridView.Rows[rowIndex].Cells["상품명"].Value.ToString();
-
-            // 상품 정보를 가져오는 SQL 쿼리를 작성합니다.
-            string selectQuery = $"SELECT * FROM Product WHERE name = '{selectedName}'";
-
-            // 데이터베이스에서 상품 정보를 가져옵니다.
-            using SqlCommand cmd = new(selectQuery, Program.Conn);
-            using SqlDataAdapter adapter = new(cmd);
-            DataSet ds = new();
-            adapter.Fill(ds, "Product");
-
-            // 가져온 상품 정보를 DetailProduct 폼에 전달합니다.
-            if (ds.Tables["Product"].Rows.Count > 0)
+            if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol")
             {
-                DataRow row = ds.Tables["Product"].Rows[0];
-                string name = row["name"].ToString();
-                int price = Convert.ToInt32(row["price"]);
-                int stock = Convert.ToInt32(row["stock"]);
-                string image = row["image"].ToString();
-                string category = row["category"].ToString();
-                string detail = row["detail"].ToString();
-
-                DetailProduct detailProduct = new DetailProduct(this,name, price, stock, image, category, detail);
-                detailProduct.ShowDialog();
+                if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
+                string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    try
+                    {
+                        Image image = Image.FromFile(imagePath);
+                        e.Value = image;
+                        e.FormattingApplied = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
         }
+       
 
-        //회원관리
-        //-----------------------------------------------------------------------------------------------
+
         private void DataViewLoad()
         {
             string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
@@ -260,8 +266,8 @@ namespace project1
             dataGridView1.DataSource = ds.Tables[0];
 
             dataGridView1.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
-            
-            
+            dataGridView1.Columns[0].Width = 90;
+            dataGridView1.Columns[2].Width = 200;
 
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
             dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
@@ -288,7 +294,11 @@ namespace project1
             }
             form.Show();
         }
-       
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -305,6 +315,43 @@ namespace project1
                 form = new Certification(_uid, id,status);
             }
             form.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            using SqlCommand cmd = new($"select * from Manager", Program.Conn);
+            SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            DataTable table = ds.Tables[0];
+
+
+            foreach (DataRow row in table.Rows)
+            {
+                products.Add(new()
+                {
+                    /*Uid = (int)row["uid"],
+                    Name = (string)row["name"],
+                    PhoneNum = (string)row["phonenum"],
+                    PassWord = (string)row["pw"],
+                    Email = (string)row["email"],
+                    RegDate = (DateTime)row["regdate"],*/
+                });
+            }
+            
+            foreach (var item in ProductGridView.Columns)
+            {
+                MessageBox.Show($"{item}");
+            }
+        }
+
+        private void txt_searchProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.pictureBox1_Click(sender, e);
+            }
         }
     }
 }
