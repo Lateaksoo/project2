@@ -9,7 +9,7 @@ using System.Data;
 using System.Text;
 using System.Drawing.Imaging;
 using Newtonsoft.Json;
-
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace project1
 {
@@ -31,6 +31,7 @@ namespace project1
         public Form1()
         {
             InitializeComponent();
+            CategoryList();//-----콤보박스애 카테고리 리스트 추가
             productManagerModel = new ProductManagerModel();
             manager = new Manager(productManagerModel);
             category = productManagerModel.Category;
@@ -61,6 +62,7 @@ namespace project1
             comboBoxSex.SelectedIndex = 0;
             dtpStartDate.Value = DateTime.Now.AddMonths(-6);
             dtpEndDate.Value = DateTime.Now;
+
         }
 
         //---------------------------------------------------------------------------------
@@ -296,6 +298,39 @@ namespace project1
 
 
             //MessageBox.Show($"{ProductGridView.Rows[0].Cells[0].Value}");
+        }
+        //------------------------------카테고리목록-------------------------------------------------------//
+
+        public void CategoryList()
+        {
+            using SqlCommand cmd = new($"select*from category", Program.Conn);
+            SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            DataTable table = ds.Tables[0];
+           
+            // 콤보박스에 카테고리를 추가함
+            foreach (DataRow row in table.Rows)
+            {
+                combo_Search.Items.Add(row["keyword_name"]);
+            }
+
+            //combo_Search.Items.Add("sadf");
+        }
+
+        private void combo_Search_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            using SqlCommand cmd = new($"select name [상품명] , price [가격] , stock [재고] , category [카테고리] " +
+                                       $"from Product WHERE category = '{comboBox.SelectedItem}'", Program.Conn);
+            SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            DataTable table = ds.Tables[0];
+
+            ProductGridView.DataSource = ds.Tables[0];
         }
     }//end class
 }

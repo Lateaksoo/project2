@@ -60,6 +60,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView_Category = new System.Windows.Forms.DataGridView();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDeleteKeyName = new System.Windows.Forms.TextBox();
@@ -80,17 +81,16 @@
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.dataGridView_Category = new System.Windows.Forms.DataGridView();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).BeginInit();
             this.tabProductManagement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -404,6 +404,16 @@
             this.tabPage2.Text = "카테고리 관리";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView_Category
+            // 
+            this.dataGridView_Category.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Category.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridView_Category.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_Category.Name = "dataGridView_Category";
+            this.dataGridView_Category.RowTemplate.Height = 25;
+            this.dataGridView_Category.Size = new System.Drawing.Size(314, 539);
+            this.dataGridView_Category.TabIndex = 13;
+            // 
             // btnDeleteCategory
             // 
             this.btnDeleteCategory.Location = new System.Drawing.Point(412, 66);
@@ -534,6 +544,7 @@
             this.combo_Search.Name = "combo_Search";
             this.combo_Search.Size = new System.Drawing.Size(121, 23);
             this.combo_Search.TabIndex = 8;
+            this.combo_Search.SelectedIndexChanged += new System.EventHandler(this.combo_Search_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -595,16 +606,6 @@
             this.tabControl1.Size = new System.Drawing.Size(757, 573);
             this.tabControl1.TabIndex = 0;
             // 
-            // dataGridView_Category
-            // 
-            this.dataGridView_Category.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Category.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView_Category.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView_Category.Name = "dataGridView_Category";
-            this.dataGridView_Category.RowTemplate.Height = 25;
-            this.dataGridView_Category.Size = new System.Drawing.Size(314, 539);
-            this.dataGridView_Category.TabIndex = 13;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -622,12 +623,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).EndInit();
             this.tabProductManagement.ResumeLayout(false);
             this.tabProductManagement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,46 +1,37 @@
 [
   {
     "uid": 1,
-    "name": "건우코딱지",
-    "price": 10100010,
-    "stock": 23,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/Galaxy1.png",
+    "name": "김건우",
+    "price": 1000000000,
+    "stock": 1,
+    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
     "category": "노트북",
     "detail": ""
   },
   {
     "uid": 2,
-    "name": "로지텍마우스",
-    "price": 10000,
-    "stock": 22,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/로지텍마우스.jpg",
-    "category": "키보드/마우스",
-    "detail": "무선마우스 겁나비싸고 그만큼 편함"
+    "name": "건우시계",
+    "price": 1000000,
+    "stock": 1,
+    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "category": "노트북",
+    "detail": ""
   },
   {
     "uid": 3,
-    "name": "건우바지",
-    "price": 11111,
-    "stock": 11,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/",
-    "category": "데스크탑",
+    "name": "건우마우스",
+    "price": 1000,
+    "stock": 12,
+    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "category": "키보드/마우스",
     "detail": ""
   },
   {
     "uid": 4,
-    "name": "건우맨투맨",
-    "price": 100,
-    "stock": 10,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/",
-    "category": "모니터",
-    "detail": ""
-  },
-  {
-    "uid": 5,
-    "name": "로지택수",
-    "price": 10,
-    "stock": 10,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/",
+    "name": "건우키보드",
+    "price": 120,
+    "stock": 1,
+    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
     "category": "키보드/마우스",
     "detail": ""
   }
