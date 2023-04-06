@@ -198,11 +198,19 @@ namespace project1
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
 
+         
 
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
          
+            ProductGridView.Columns.Add(imageCol);
+            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
+            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
+            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
+            ProductGridView.Columns[5].Width = 100;
+
+        }
 
         }
 
@@ -274,6 +282,31 @@ namespace project1
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             manager.SaveTableToJson();
+        }
+        //---------------------------------------SearchProduct---------------------------------------//
+        private void txt_searchProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.pbtn_searchProduct_Click(sender, e);
+            }
+        }
+
+        private void pbtn_searchProduct_Click(object sender, EventArgs e)
+        {
+
+            using SqlCommand cmd = new($"select name [상품명] , price [가격] , stock [재고] , category [카테고리] " +
+                                       $"from Product WHERE PATINDEX('%{txt_searchProduct.Text}%', name) > 0", Program.Conn);
+            SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
+
+            DataTable table = ds.Tables[0];
+
+            ProductGridView.DataSource = ds.Tables[0];
+
+
+            //MessageBox.Show($"{ProductGridView.Rows[0].Cells[0].Value}");
         }
     }//end class
 }

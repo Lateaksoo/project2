@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btn_load = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -70,8 +71,9 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pbtn_searchProduct = new System.Windows.Forms.PictureBox();
+            this.txt_searchProduct = new System.Windows.Forms.TextBox();
+            this.combo_Search = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ProductGridView = new System.Windows.Forms.DataGridView();
@@ -84,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabProductManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -486,8 +489,9 @@
             // 
             // tabProductManagement
             // 
-            this.tabProductManagement.Controls.Add(this.textBox1);
-            this.tabProductManagement.Controls.Add(this.comboBox1);
+            this.tabProductManagement.Controls.Add(this.pbtn_searchProduct);
+            this.tabProductManagement.Controls.Add(this.txt_searchProduct);
+            this.tabProductManagement.Controls.Add(this.combo_Search);
             this.tabProductManagement.Controls.Add(this.label13);
             this.tabProductManagement.Controls.Add(this.label12);
             this.tabProductManagement.Controls.Add(this.ProductGridView);
@@ -501,25 +505,37 @@
             this.tabProductManagement.Text = "상품관리";
             this.tabProductManagement.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // pbtn_searchProduct
             // 
-            this.textBox1.Location = new System.Drawing.Point(226, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 23);
-            this.textBox1.TabIndex = 9;
+            this.pbtn_searchProduct.Image = ((System.Drawing.Image)(resources.GetObject("pbtn_searchProduct.Image")));
+            this.pbtn_searchProduct.Location = new System.Drawing.Point(468, 2);
+            this.pbtn_searchProduct.Name = "pbtn_searchProduct";
+            this.pbtn_searchProduct.Size = new System.Drawing.Size(32, 30);
+            this.pbtn_searchProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbtn_searchProduct.TabIndex = 1;
+            this.pbtn_searchProduct.TabStop = false;
+            this.pbtn_searchProduct.Click += new System.EventHandler(this.pbtn_searchProduct_Click);
             // 
-            // comboBox1
+            // txt_searchProduct
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(63, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 8;
+            this.txt_searchProduct.Location = new System.Drawing.Point(226, 4);
+            this.txt_searchProduct.Name = "txt_searchProduct";
+            this.txt_searchProduct.Size = new System.Drawing.Size(236, 23);
+            this.txt_searchProduct.TabIndex = 9;
+            this.txt_searchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_searchProduct_KeyDown);
+            // 
+            // combo_Search
+            // 
+            this.combo_Search.FormattingEnabled = true;
+            this.combo_Search.Location = new System.Drawing.Point(63, 4);
+            this.combo_Search.Name = "combo_Search";
+            this.combo_Search.Size = new System.Drawing.Size(121, 23);
+            this.combo_Search.TabIndex = 8;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(190, 10);
+            this.label13.Location = new System.Drawing.Point(190, 8);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(42, 15);
             this.label13.TabIndex = 7;
@@ -528,7 +544,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 10);
+            this.label12.Location = new System.Drawing.Point(3, 8);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 15);
             this.label12.TabIndex = 6;
@@ -545,7 +561,7 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(666, 6);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(666, 4);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteProduct.TabIndex = 3;
@@ -555,7 +571,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(585, 6);
+            this.btnAddProduct.Location = new System.Drawing.Point(585, 4);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 2;
@@ -595,6 +611,7 @@
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
             this.tabProductManagement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -646,9 +663,10 @@
         private Button btn_update;
         private DataGridView dataGridView1;
         private DataGridView ProductGridView;
-        private ComboBox comboBox1;
+        private ComboBox combo_Search;
         private Label label13;
         private Label label12;
-        private TextBox textBox1;
+        private TextBox txt_searchProduct;
+        private PictureBox pbtn_searchProduct;
     }
 }
