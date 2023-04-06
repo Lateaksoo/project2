@@ -16,7 +16,7 @@ namespace project1
         private ProductManagerModel productManagerModel;
         private Manager manager;
 
-        
+
         private Form1 form1;
         public DeleteProduct(Form1 form1)
         {
@@ -42,21 +42,15 @@ namespace project1
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            if (txtProductName.Text == "") MessageBox.Show("상품명을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (comboBoxCategory.Text == "") MessageBox.Show("카테고리를 선택하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            if (manager.DeleteProduct(txtProductName.Text, comboBoxCategory.Text) == true) //상품 삭제 성공하면 
             {
-                manager.DeleteProduct(txtProductName.Text, comboBoxCategory.Text);
                 this.Close();
-                form1.ProductDataViewLoad();
+                form1.ProductDataViewLoad(); //폼 닫고 그리드뷰 새로고침
             }
         }
-        public string GetImageByProductName(string name)
+        public string GetImageByProductName(string name) // 입력한 이름이 데이터베이스에 있는지 확인하고 제품 이미지 경로 가져오기
         {
             string imagePath = "";
-
-            try
-            {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = Program.Conn;
@@ -71,18 +65,12 @@ namespace project1
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
             return imagePath;
         }
 
-   
 
-        private void txtProductName_Leave(object sender, EventArgs e)
+
+        private void txtProductName_Leave(object sender, EventArgs e) //텍스트 입력하면 사진을 띄우고 사진이 없는 상품이면 안띄움
         {
             try
             {
@@ -90,10 +78,9 @@ namespace project1
             }
             catch (Exception ex)
             {
-                txtProductName.Text = "";
                 return;
             }
-          
+
         }
     }
 }

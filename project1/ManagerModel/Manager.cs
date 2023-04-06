@@ -177,12 +177,12 @@ namespace project1
             }
 
         } //상품 추가
-        public void DeleteProduct(string name, string category) //상품 삭제
+        public bool DeleteProduct(string name, string category) //상품 삭제 성공 여부 반환
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("상품을 입력해주세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
             using (SqlCommand cmd = new SqlCommand(ProductDeleteSql, Program.Conn))
             {
@@ -192,10 +192,12 @@ namespace project1
                 if (result == 0)
                 {
                     MessageBox.Show("삭제할 데이터가 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
                 else
                 {
                     MessageBox.Show("데이터가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
             }
         }

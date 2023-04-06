@@ -16,11 +16,6 @@ namespace project1
         private ProductManagerModel productManagerModel;
         private Manager manager;
 
-        private string productName;
-        private int productPrice;
-        private int productStock;
-        private string productImage;
-        private string category;
         private Form1 form1;
 
         public AddProduct(Form1 form1)
@@ -28,11 +23,6 @@ namespace project1
             InitializeComponent();
             productManagerModel = new ProductManagerModel();
             manager = new Manager(productManagerModel);
-            productName = productManagerModel.ProductName;
-            productPrice = productManagerModel.ProductPrice;
-            productStock = productManagerModel.ProductStock;
-            productImage = productManagerModel.ProductImage;
-            category = productManagerModel.Category;
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             this.form1 = form1;
         }
