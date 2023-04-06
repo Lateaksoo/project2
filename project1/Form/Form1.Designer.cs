@@ -80,6 +80,7 @@
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.dataGridView_Category = new System.Windows.Forms.DataGridView();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -89,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -383,6 +385,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView_Category);
             this.tabPage2.Controls.Add(this.btnDeleteCategory);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.txtDeleteKeyName);
@@ -403,9 +406,9 @@
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(456, 167);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(412, 66);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnDeleteCategory.Size = new System.Drawing.Size(100, 28);
             this.btnDeleteCategory.TabIndex = 12;
             this.btnDeleteCategory.Text = "카테고리 삭제";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
@@ -414,7 +417,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(388, 65);
+            this.label11.Location = new System.Drawing.Point(327, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 15);
             this.label11.TabIndex = 11;
@@ -422,21 +425,21 @@
             // 
             // txtDeleteKeyName
             // 
-            this.txtDeleteKeyName.Location = new System.Drawing.Point(483, 62);
+            this.txtDeleteKeyName.Location = new System.Drawing.Point(412, 37);
             this.txtDeleteKeyName.Name = "txtDeleteKeyName";
             this.txtDeleteKeyName.Size = new System.Drawing.Size(100, 23);
             this.txtDeleteKeyName.TabIndex = 10;
             // 
             // txtKeywordName
             // 
-            this.txtKeywordName.Location = new System.Drawing.Point(126, 116);
+            this.txtKeywordName.Location = new System.Drawing.Point(412, 169);
             this.txtKeywordName.Name = "txtKeywordName";
             this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
             this.txtKeywordName.TabIndex = 6;
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(126, 59);
+            this.txtCategory.Location = new System.Drawing.Point(412, 138);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(100, 23);
             this.txtCategory.TabIndex = 0;
@@ -444,7 +447,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(384, 23);
+            this.label10.Location = new System.Drawing.Point(323, 12);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 15);
             this.label10.TabIndex = 9;
@@ -453,7 +456,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 23);
+            this.label9.Location = new System.Drawing.Point(323, 111);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 15);
             this.label9.TabIndex = 8;
@@ -462,7 +465,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 119);
+            this.label8.Location = new System.Drawing.Point(327, 172);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 7;
@@ -470,9 +473,9 @@
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(98, 167);
+            this.btnAddCategory.Location = new System.Drawing.Point(412, 198);
             this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(104, 28);
+            this.btnAddCategory.Size = new System.Drawing.Size(100, 28);
             this.btnAddCategory.TabIndex = 2;
             this.btnAddCategory.Text = "카테고리 추가";
             this.btnAddCategory.UseVisualStyleBackColor = true;
@@ -481,7 +484,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 62);
+            this.label7.Location = new System.Drawing.Point(327, 141);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 1;
@@ -592,6 +595,16 @@
             this.tabControl1.Size = new System.Drawing.Size(757, 573);
             this.tabControl1.TabIndex = 0;
             // 
+            // dataGridView_Category
+            // 
+            this.dataGridView_Category.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Category.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridView_Category.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_Category.Name = "dataGridView_Category";
+            this.dataGridView_Category.RowTemplate.Height = 25;
+            this.dataGridView_Category.Size = new System.Drawing.Size(314, 539);
+            this.dataGridView_Category.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -614,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbtn_searchProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Category)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -668,5 +682,6 @@
         private Label label12;
         private TextBox txt_searchProduct;
         private PictureBox pbtn_searchProduct;
+        private DataGridView dataGridView_Category;
     }
 }
