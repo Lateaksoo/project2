@@ -39,9 +39,9 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtimageRoot = new System.Windows.Forms.TextBox();
-            this.txtCategory = new System.Windows.Forms.TextBox();
             this.txtDetail = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbDetailImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,13 +138,6 @@
             this.txtimageRoot.Size = new System.Drawing.Size(187, 54);
             this.txtimageRoot.TabIndex = 25;
             // 
-            // txtCategory
-            // 
-            this.txtCategory.Location = new System.Drawing.Point(345, 141);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(100, 23);
-            this.txtCategory.TabIndex = 26;
-            // 
             // txtDetail
             // 
             this.txtDetail.HideSelection = false;
@@ -164,14 +157,22 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(345, 144);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(100, 23);
+            this.comboBoxCategory.TabIndex = 29;
+            // 
             // DetailProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 450);
+            this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtDetail);
-            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.txtimageRoot);
             this.Controls.Add(this.pbDetailImage);
             this.Controls.Add(this.label5);
@@ -205,8 +206,8 @@
         private TextBox txtName;
         private Button btnSave;
         private TextBox txtimageRoot;
-        private TextBox txtCategory;
         private TextBox txtDetail;
         private Button btnEdit;
+        private ComboBox comboBoxCategory;
     }
 }

@@ -42,19 +42,29 @@ namespace project1
 
         private void DetailProduct_Load(object sender, EventArgs e)
         {
+            DataTable categoryTable = manager.GetCategoryComboBox();
+            // 콤보박스에 카테고리를 추가함
+            foreach (DataRow row in categoryTable.Rows)
+            {
+                comboBoxCategory.Items.Add(row["keyword_name"]);
+            }
+
+            //기본으로 선택되어 있는 값
+            comboBoxCategory.SelectedIndex = 0;
+
             txtName.Text = _name;
             txtPrice.Text = _price.ToString();
             txtStock.Text = _stock.ToString();
             txtimageRoot.Text = _image.ToString();
             pbDetailImage.Image = Image.FromFile(_image);
-            txtCategory.Text = _category;
+            comboBoxCategory.Text = _category;
             txtDetail.Text = _detail;
 
             txtName.Enabled = false;
             txtPrice.Enabled = false;
             txtStock.Enabled = false;
             txtimageRoot.Enabled = false;
-            txtCategory.Enabled = false;
+            comboBoxCategory.Enabled = false;
             txtDetail.Enabled = false;
 
         }
@@ -65,7 +75,7 @@ namespace project1
             txtPrice.Enabled = true;
             txtStock.Enabled = true;
             txtimageRoot.Enabled = true;
-            txtCategory.Enabled = true;
+            comboBoxCategory.Enabled = true;
             txtDetail.Enabled = true;
         }
 
@@ -75,10 +85,10 @@ namespace project1
             txtPrice.Enabled = false;
             txtStock.Enabled = false;
             txtimageRoot.Enabled = false;
-            txtCategory.Enabled = false;
+            comboBoxCategory.Enabled = false;
             txtDetail.Enabled = false;
 
-            manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtimageRoot.Text, txtCategory.Text, txtDetail.Text);
+            manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtimageRoot.Text, comboBoxCategory.Text, txtDetail.Text);
             this.Close();
             form1.ProductDataViewLoad();
         }
