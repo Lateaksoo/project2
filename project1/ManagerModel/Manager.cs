@@ -8,11 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
-using Microsoft.Office.Interop.Excel;
-using DataTable = System.Data.DataTable;
-using Chart = System.Windows.Forms.DataVisualization.Charting.Chart;
-using Series = System.Windows.Forms.DataVisualization.Charting.Series;
-using Application = Microsoft.Office.Interop.Excel.Application;
 using Newtonsoft.Json;
 
 namespace project1
@@ -25,6 +20,8 @@ namespace project1
             _productManagerModel = productManagerModel;
         }
 
+        // 현재 실행 파일이 있는 디렉토리 경로
+        public string baseDirectory = Path.GetDirectoryName(Application.ExecutablePath);
         #region SQL queries
         //카테고리 관련
         //---------------------------------------------------------------------------------------
@@ -289,9 +286,6 @@ namespace project1
             string managerJson = JsonConvert.SerializeObject(managerTable, Formatting.Indented);
             string categoryJson = JsonConvert.SerializeObject(categoryTable, Formatting.Indented);
 
-            // 현재 실행 파일이 있는 디렉토리 경로
-            string baseDirectory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
-
             // 경로에서 상위 디렉토리를 추출할 횟수
             int count = 3;
 
@@ -317,7 +311,45 @@ namespace project1
 
         //-----------------------------------읽어오기-------------------------------------------
 
+        private void ReadProductJson()
+        {
+            int count = 3;
+            for (int i = 0; i < count; i++)
+            {
+                baseDirectory = Path.GetDirectoryName(baseDirectory);
+            }
+            //파일 경로 설정
+            string productJsonPath = Path.Combine(baseDirectory, "TableJson", "product.json");
+            string managerJsonPath = Path.Combine(baseDirectory, "TableJson", "manager.json");
+            string categoryJsonPath = Path.Combine(baseDirectory, "TableJson", "category.json");
 
+            //파일 문자열로 읽어오기
+            string productJson = File.ReadAllText(productJsonPath);
+            string managerJson = File.ReadAllText(managerJsonPath);
+            string categoryJson = File.ReadAllText(categoryJsonPath);
+
+            //읽어온걸 테이블로 변환하기
+            DataTable productTable = JsonConvert.DeserializeObject<DataTable>(productJson);
+            DataTable managerTable = JsonConvert.DeserializeObject<DataTable>(managerJson);
+            DataTable categoryTable = JsonConvert.DeserializeObject<DataTable>(categoryJson);
+
+            //기존 테이블 정보 삭제하기
+            using SqlCommand cmd = new("TRUNCATE TABLE product; TRUNCATE TABLE Manager; TRUNCATE TABLE category;", Program.Conn);
+            cmd.ExecuteNonQuery();
+
+            //테이블에 불러온 정보 저장하기
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Program.Conn))
+            {
+                bulkCopy.DestinationTableName = "product";
+                bulkCopy.WriteToServer(productTable);
+                bulkCopy.DestinationTableName = "Manager";
+                bulkCopy.WriteToServer(managerTable);
+                bulkCopy.DestinationTableName = "category";
+                bulkCopy.WriteToServer(categoryTable);
+
+            }
+
+        }
 
 
 

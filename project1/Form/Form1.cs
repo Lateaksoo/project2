@@ -8,10 +8,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data;
 using System.Text;
 using System.Drawing.Imaging;
-using Microsoft.Office.Interop.Excel;
-using DataTable = System.Data.DataTable;
-using CheckBox = System.Windows.Forms.CheckBox;
-using Application = System.Windows.Forms.Application;
 using Newtonsoft.Json;
 
 
@@ -202,20 +198,11 @@ namespace project1
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
 
-            ProductGridView.RowTemplate.Height = 100;
 
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
-            //사진을 표시할 행 추가
-            DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
-            imageCol.HeaderText = "사진";
-            imageCol.Name = "imageCol";
-            ProductGridView.Columns.Add(imageCol);
-            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
-            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
-            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
-            ProductGridView.Columns[5].Width = 100;
+         
 
         }
 
