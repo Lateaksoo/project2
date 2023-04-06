@@ -194,9 +194,9 @@
             // 
             // btnWeek
             // 
-            this.btnWeek.Location = new System.Drawing.Point(173, 494);
+            this.btnWeek.Location = new System.Drawing.Point(25, 481);
             this.btnWeek.Name = "btnWeek";
-            this.btnWeek.Size = new System.Drawing.Size(142, 43);
+            this.btnWeek.Size = new System.Drawing.Size(206, 30);
             this.btnWeek.TabIndex = 20;
             this.btnWeek.Text = "주간";
             this.btnWeek.UseVisualStyleBackColor = true;
@@ -204,9 +204,9 @@
             // 
             // btnMonth
             // 
-            this.btnMonth.Location = new System.Drawing.Point(25, 494);
+            this.btnMonth.Location = new System.Drawing.Point(25, 445);
             this.btnMonth.Name = "btnMonth";
-            this.btnMonth.Size = new System.Drawing.Size(142, 43);
+            this.btnMonth.Size = new System.Drawing.Size(206, 30);
             this.btnMonth.TabIndex = 19;
             this.btnMonth.Text = "월간";
             this.btnMonth.UseVisualStyleBackColor = true;
@@ -347,9 +347,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(60, 434);
+            this.btnSearch.Location = new System.Drawing.Point(25, 411);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(142, 43);
+            this.btnSearch.Size = new System.Drawing.Size(206, 30);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "조회";
             this.btnSearch.UseVisualStyleBackColor = true;

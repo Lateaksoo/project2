@@ -183,7 +183,7 @@ namespace project1
 
         public void ProductDataViewLoad() //상품 리스트보이기
         {
-            const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
+            const string sql = "SELECT name [상품명] , price [가격] , stock [재고], category [카테고리] FROM Product";
 
             using SqlCommand cmd = new(sql, Program.Conn);
             using SqlDataAdapter adapter = new(cmd);
@@ -202,14 +202,6 @@ namespace project1
 
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
-
-
-            ProductGridView.Columns.Add(imageCol);
-            imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
-            imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
-            ProductGridView.Columns[5].ReadOnly = true; // 사진은 읽기전용
-            ProductGridView.Columns[5].Width = 100;
-
         }
 
 
