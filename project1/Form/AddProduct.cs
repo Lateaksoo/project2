@@ -60,7 +60,23 @@ namespace project1
                 string sourceImagePath = txtProductImage.Text; // txtProductImage 텍스트 상자에 입력된 이미지 경로
                 string targetFileName = Path.GetFileName(sourceImagePath); // 파일 이름 추출
                 string targetDirectory = Path.GetDirectoryName(Application.ExecutablePath); // 현재 실행 파일이 있는 디렉토리 경로
-                string targetImagePath = Path.Combine(targetDirectory, targetFileName); // 파일 경로 생성
+
+                // 경로에서 상위 디렉토리를 추출할 횟수
+                int count = 3;
+
+                // 경로에서 필요한 부분만 추출
+                for (int i = 0; i < count; i++)
+                {
+                    targetDirectory = Path.GetDirectoryName(targetDirectory);
+                }
+
+                // 추가된 상품의 이미지 경로를 프로그램 내의 상대 경로로 변경
+                
+                
+                string targetImagePath = targetDirectory + "/" + "Image/" + targetFileName;
+                
+
+                //string targetImagePath = Path.Combine(targetDirectory, targetFileName); // 파일 경로 생성
                                                                                         
                 if (File.Exists(targetImagePath)) // 이미 파일이 존재하는지 확인
                 {
@@ -95,11 +111,7 @@ namespace project1
                         txtProductImage.Text = "";  //이미지 파일 저장에 실패하면 잘못된 경로로 판단하고 입력값을 저장하지 않는다.
                     }
                 }
-
-                // 추가된 상품의 이미지 경로를 프로그램 내의 상대 경로로 변경
-                string relativeImagePath = targetFileName;
-                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(txtProductImage.Text);
-                txtProductImage.Text = targetDirectory + "/" + fileNameWithoutExtension + ".PNG";
+                txtProductImage.Text = targetImagePath;
 
                 //데이터베이스에 파일 저장
                 manager.AddProduct(txtProductName.Text,

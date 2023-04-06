@@ -84,7 +84,16 @@ namespace project1
 
         private void txtProductName_Leave(object sender, EventArgs e)
         {
-            pictureBox1.Image = Bitmap.FromFile($@"{GetImageByProductName(txtProductName.Text)}");
+            try
+            {
+                pictureBox1.Image = Bitmap.FromFile($@"{GetImageByProductName(txtProductName.Text)}");
+            }
+            catch (Exception ex)
+            {
+                txtProductName.Text = "";
+                return;
+            }
+          
         }
     }
 }
