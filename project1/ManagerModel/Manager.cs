@@ -221,5 +221,29 @@ namespace project1
             MessageBox.Show("수정완료.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public void UpdateProduct2(string originName ,string name, string price, string stock, string image, string category, string detail)
+        {
+            string selectsql = "SELECT * FROM Product WHERE name = @name";
+
+            using SqlCommand cmd = new SqlCommand(selectsql, Program.Conn);
+            cmd.Parameters.AddWithValue("@name", originName);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                reader.Close();
+                string sql = $"UPDATE Product SET name = @Name, price = @Price, stock = @stock, image = @Image, category = @category, detail = @detail WHERE name = @OriginName";
+                SqlCommand cmdUpdate = new SqlCommand(sql, Program.Conn);
+                cmdUpdate.Parameters.AddWithValue("@OriginName", originName);
+                cmdUpdate.Parameters.AddWithValue("@name", name);
+                cmdUpdate.Parameters.AddWithValue("@price", price);
+                cmdUpdate.Parameters.AddWithValue("@stock", stock);
+                cmdUpdate.Parameters.AddWithValue("@image", image);
+                cmdUpdate.Parameters.AddWithValue("@category", category);
+                cmdUpdate.Parameters.AddWithValue("@detail", detail);
+                cmdUpdate.ExecuteNonQuery();
+            }
+        }
+
     }//end class
 }
