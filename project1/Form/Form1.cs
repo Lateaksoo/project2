@@ -41,7 +41,7 @@ namespace project1
             timeUnit = productManagerModel.TimeUnit;
             keywordName = productManagerModel.KeywordName;
             searchProductName = productManagerModel.SearchProductName;
-           
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -180,7 +180,7 @@ namespace project1
             DeleteProduct deleteProduct = new DeleteProduct(this);
             deleteProduct.Show();
         }
-      
+
         public void ProductDataViewLoad() //상품 리스트보이기
         {
             const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
@@ -198,12 +198,12 @@ namespace project1
             ProductGridView.Columns[0].Width = 90;
             ProductGridView.Columns[3].Width = 200;
 
-         
+
 
             ProductGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
 
-         
+
             ProductGridView.Columns.Add(imageCol);
             imageCol.Image = new Bitmap(1, 1); // 빈 비트맵 생성
             imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // 이미지 레이아웃 설정
@@ -212,7 +212,6 @@ namespace project1
 
         }
 
-        }
 
 
         private void DataViewLoad()
@@ -272,12 +271,12 @@ namespace project1
 
             if (form == null)
             {
-                form = new Certification(_uid, id,status);
+                form = new Certification(_uid, id, status);
             }
             form.Show();
         }
 
- 
+
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -310,3 +309,5 @@ namespace project1
         }
     }//end class
 }
+
+
