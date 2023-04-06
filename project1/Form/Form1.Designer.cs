@@ -71,7 +71,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
             this.ProductGridView = new System.Windows.Forms.DataGridView();
-            this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -484,7 +483,6 @@
             // tabProductManagement
             // 
             this.tabProductManagement.Controls.Add(this.ProductGridView);
-            this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
             this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
@@ -504,16 +502,6 @@
             this.ProductGridView.Size = new System.Drawing.Size(743, 418);
             this.ProductGridView.TabIndex = 5;
             this.ProductGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGridView_CellDoubleClick);
-            // 
-            // btnModifyProduct
-            // 
-            this.btnModifyProduct.Location = new System.Drawing.Point(521, 489);
-            this.btnModifyProduct.Name = "btnModifyProduct";
-            this.btnModifyProduct.Size = new System.Drawing.Size(106, 23);
-            this.btnModifyProduct.TabIndex = 4;
-            this.btnModifyProduct.Text = "상품정보 수정";
-            this.btnModifyProduct.UseVisualStyleBackColor = true;
-            this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
             // 
             // btnDeleteProduct
             // 
@@ -608,7 +596,6 @@
         private Button btnAddCategory;
         private Label label7;
         private TabPage tabProductManagement;
-        private Button btnModifyProduct;
         private Button btnDeleteProduct;
         private Button btnAddProduct;
         private TabControl tabControl1;

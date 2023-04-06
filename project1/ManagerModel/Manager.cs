@@ -202,47 +202,19 @@ namespace project1
             }
         }
 
-        public void UpdateProduct(string name, object value, int order) //상품 수정
+        public void UpdateProduct(string originName, string name, string price, string stock, string image, string category, string detail) //디테일에서 상품정보 수정하기
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = Program.Conn;
-            order = order + 2; //uid가 첫번째에 있어서 2를 더함
-            // 선택된 셀의 열 이름 구하기
-            cmd.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Product' AND ORDINAL_POSITION = @order";
-            cmd.Parameters.AddWithValue("@order", order);
-
-            string columnName = cmd.ExecuteScalar().ToString();
-
-            //셀 업데이트 하기
-            cmd.CommandText = $"UPDATE Product SET [{columnName}] = @value WHERE name = @name";
-            cmd.Parameters.AddWithValue("@value", value);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("수정완료.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        public void UpdateProduct2(string originName ,string name, string price, string stock, string image, string category, string detail)
-        {
-            string selectsql = "SELECT * FROM Product WHERE name = @name";
-
-            using SqlCommand cmd = new SqlCommand(selectsql, Program.Conn);
-            cmd.Parameters.AddWithValue("@name", originName);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                reader.Close();
-                string sql = $"UPDATE Product SET name = @Name, price = @Price, stock = @stock, image = @Image, category = @category, detail = @detail WHERE name = @OriginName";
-                SqlCommand cmdUpdate = new SqlCommand(sql, Program.Conn);
-                cmdUpdate.Parameters.AddWithValue("@OriginName", originName);
-                cmdUpdate.Parameters.AddWithValue("@name", name);
-                cmdUpdate.Parameters.AddWithValue("@price", price);
-                cmdUpdate.Parameters.AddWithValue("@stock", stock);
-                cmdUpdate.Parameters.AddWithValue("@image", image);
-                cmdUpdate.Parameters.AddWithValue("@category", category);
-                cmdUpdate.Parameters.AddWithValue("@detail", detail);
-                cmdUpdate.ExecuteNonQuery();
-            }
+            string sql = $"UPDATE Product SET name = @Name, price = @Price, stock = @stock, image = @Image, category = @category, detail = @detail WHERE name = @OriginName";
+            SqlCommand cmdUpdate = new SqlCommand(sql, Program.Conn);
+            cmdUpdate.Parameters.AddWithValue("@OriginName", originName);
+            cmdUpdate.Parameters.AddWithValue("@name", name);
+            cmdUpdate.Parameters.AddWithValue("@price", price);
+            cmdUpdate.Parameters.AddWithValue("@stock", stock);
+            cmdUpdate.Parameters.AddWithValue("@image", image);
+            cmdUpdate.Parameters.AddWithValue("@category", category);
+            cmdUpdate.Parameters.AddWithValue("@detail", detail);
+            cmdUpdate.ExecuteNonQuery();
+            MessageBox.Show("수정 완료");
         }
 
     }//end class

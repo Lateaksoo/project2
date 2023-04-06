@@ -15,6 +15,7 @@ namespace project1
     {
         private ProductManagerModel productManagerModel;
         private Manager manager;
+        private Form1 form1;
 
         private string _name;
         private int _price;
@@ -22,10 +23,11 @@ namespace project1
         private string _image;
         private string _category;
         private string _detail;
-        private string origin_name;
-        public DetailProduct(string name, int price, int stock, string image, string category, string detail)
+
+        public DetailProduct(Form1 form1, string name, int price, int stock, string image, string category, string detail)
         {
             InitializeComponent();
+            this.form1 = form1;
             productManagerModel = new ProductManagerModel();
             manager = new Manager(productManagerModel);
 
@@ -76,7 +78,9 @@ namespace project1
             txtCategory.Enabled = false;
             txtDetail.Enabled = false;
 
-            manager.UpdateProduct2(_name,txtName.Text,txtPrice.Text,txtStock.Text,txtimageRoot.Text,txtCategory.Text,txtDetail.Text);
+            manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtimageRoot.Text, txtCategory.Text, txtDetail.Text);
+            this.Close();
+            form1.ProductDataViewLoad();
         }
     }
 }
