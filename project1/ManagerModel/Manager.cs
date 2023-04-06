@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
+using Microsoft.Office.Interop.Excel;
 
 namespace project1
 {
@@ -113,7 +114,7 @@ namespace project1
                 }
             }
         }
-        public DataTable GetCategoryComboBox() //카테고리 데이터를 데이터테이블로 반환하기
+        public System.Data.DataTable GetCategoryComboBox() //카테고리 데이터를 데이터테이블로 반환하기
         {
             // 테이블에서 카테고리를 가져와서 DataTable로 반환함
             using (SqlCommand cmd = new SqlCommand(comboBoxSql, Program.Conn))
@@ -241,10 +242,45 @@ namespace project1
 
         //------------------------------------엑셀에 저장하기------------------------------------------
 
-        public void SaveSqlToExcel()
+        public void SaveSqlToExcel() //엑셀에 저장하기
         {
+            DataTable productTable = GetProductTable();
+            DataTable managerTable = GetManagerTable();
+            DataTable categoryTable = GetCategoryTable();
+
 
         }
+
+        private DataTable GetCategoryTable()//카테고리 정보 데이터테이블로 가져오기
+        {
+            string query = "SELECT * FROM category";
+            using SqlCommand cmd = new(query, Program.Conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new();   // DataTable 객체 생성
+            adapter.Fill(table);  // SqlDataAdapter를 사용하여 DataTable 객체 채우기
+            return table;
+        }
+
+        private DataTable GetManagerTable() //메니저 정보 데이터테이블로 가져오기
+        {
+            string query = "SELECT * FROM Manager";
+            using SqlCommand cmd = new(query, Program.Conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new();   // DataTable 객체 생성
+            adapter.Fill(table);  // SqlDataAdapter를 사용하여 DataTable 객체 채우기
+            return table;
+        }
+
+        private DataTable GetProductTable() //상품정보 데이터테이블로 가져오기
+        {
+            string query = "SELECT * FROM Product";
+            using SqlCommand cmd = new(query, Program.Conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new();   // DataTable 객체 생성
+            adapter.Fill(table);  // SqlDataAdapter를 사용하여 DataTable 객체 채우기
+            return table;
+        }
+
 
     }//end class
 }
