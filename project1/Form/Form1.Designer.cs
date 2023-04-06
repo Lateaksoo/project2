@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btn_load = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -71,10 +71,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabProductManagement = new System.Windows.Forms.TabPage();
             this.ProductGridView = new System.Windows.Forms.DataGridView();
-            this.btnModifyProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -360,17 +363,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Right;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(231, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(515, 539);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -483,8 +486,11 @@
             // 
             // tabProductManagement
             // 
+            this.tabProductManagement.Controls.Add(this.textBox1);
+            this.tabProductManagement.Controls.Add(this.comboBox1);
+            this.tabProductManagement.Controls.Add(this.label13);
+            this.tabProductManagement.Controls.Add(this.label12);
             this.tabProductManagement.Controls.Add(this.ProductGridView);
-            this.tabProductManagement.Controls.Add(this.btnModifyProduct);
             this.tabProductManagement.Controls.Add(this.btnDeleteProduct);
             this.tabProductManagement.Controls.Add(this.btnAddProduct);
             this.tabProductManagement.Location = new System.Drawing.Point(4, 24);
@@ -498,25 +504,15 @@
             // ProductGridView
             // 
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductGridView.Location = new System.Drawing.Point(3, 3);
+            this.ProductGridView.Location = new System.Drawing.Point(3, 35);
             this.ProductGridView.Name = "ProductGridView";
             this.ProductGridView.RowTemplate.Height = 25;
-            this.ProductGridView.Size = new System.Drawing.Size(743, 418);
+            this.ProductGridView.Size = new System.Drawing.Size(743, 504);
             this.ProductGridView.TabIndex = 5;
-            // 
-            // btnModifyProduct
-            // 
-            this.btnModifyProduct.Location = new System.Drawing.Point(521, 489);
-            this.btnModifyProduct.Name = "btnModifyProduct";
-            this.btnModifyProduct.Size = new System.Drawing.Size(106, 23);
-            this.btnModifyProduct.TabIndex = 4;
-            this.btnModifyProduct.Text = "상품정보 수정";
-            this.btnModifyProduct.UseVisualStyleBackColor = true;
-            this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(304, 489);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(666, 6);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteProduct.TabIndex = 3;
@@ -526,7 +522,7 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(77, 489);
+            this.btnAddProduct.Location = new System.Drawing.Point(585, 6);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 2;
@@ -547,6 +543,40 @@
             this.tabControl1.Size = new System.Drawing.Size(757, 573);
             this.tabControl1.TabIndex = 0;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 10);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 15);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "카테고리";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(190, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 15);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "검색 : ";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 7);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(226, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(236, 23);
+            this.textBox1.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -564,6 +594,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabProductManagement.ResumeLayout(false);
+            this.tabProductManagement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -607,7 +638,6 @@
         private Button btnAddCategory;
         private Label label7;
         private TabPage tabProductManagement;
-        private Button btnModifyProduct;
         private Button btnDeleteProduct;
         private Button btnAddProduct;
         private TabControl tabControl1;
@@ -616,5 +646,9 @@
         private Button btn_update;
         private DataGridView dataGridView1;
         private DataGridView ProductGridView;
+        private ComboBox comboBox1;
+        private Label label13;
+        private Label label12;
+        private TextBox textBox1;
     }
 }

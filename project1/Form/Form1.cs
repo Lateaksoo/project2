@@ -177,20 +177,7 @@ namespace project1
             DeleteProduct deleteProduct = new DeleteProduct(this);
             deleteProduct.Show();
         }
-
-        private void btnModifyProduct_Click(object sender, EventArgs e) //상품정보 수정
-        {
-            int rowIndex = ProductGridView.CurrentCell.RowIndex;
-            int columnIndex = ProductGridView.CurrentCell.ColumnIndex;
-            if (rowIndex >= 0 && columnIndex >= 0)
-            {
-                string name = ProductGridView.Rows[ProductGridView.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
-                int order = ProductGridView.CurrentCell.ColumnIndex;
-                DataGridViewCell cell = ProductGridView.Rows[rowIndex].Cells[columnIndex];
-                manager.UpdateProduct(name, cell.Value, order);
-                ProductDataViewLoad();
-            }
-        }
+      
         public void ProductDataViewLoad() //상품 리스트보이기
         {
             const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
@@ -317,7 +304,9 @@ namespace project1
             form.Show();
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
 
-        
+        }
     }//end class
 }
