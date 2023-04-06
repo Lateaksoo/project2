@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CategoryGridView = new System.Windows.Forms.DataGridView();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDeleteKeyName = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryGridView)).BeginInit();
             this.tabProductManagement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -130,6 +132,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(8, 50);
             this.dataGridView1.Name = "dataGridView1";
@@ -376,6 +379,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.CategoryGridView);
             this.tabPage2.Controls.Add(this.btnDeleteCategory);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.txtDeleteKeyName);
@@ -394,9 +398,20 @@
             this.tabPage2.Text = "카테고리 관리";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // CategoryGridView
+            // 
+            this.CategoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CategoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryGridView.Location = new System.Drawing.Point(22, 15);
+            this.CategoryGridView.Name = "CategoryGridView";
+            this.CategoryGridView.ReadOnly = true;
+            this.CategoryGridView.RowTemplate.Height = 25;
+            this.CategoryGridView.Size = new System.Drawing.Size(311, 504);
+            this.CategoryGridView.TabIndex = 13;
+            // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(456, 167);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(470, 468);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(104, 28);
             this.btnDeleteCategory.TabIndex = 12;
@@ -407,7 +422,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(388, 65);
+            this.label11.Location = new System.Drawing.Point(398, 363);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 15);
             this.label11.TabIndex = 11;
@@ -415,21 +430,21 @@
             // 
             // txtDeleteKeyName
             // 
-            this.txtDeleteKeyName.Location = new System.Drawing.Point(483, 62);
+            this.txtDeleteKeyName.Location = new System.Drawing.Point(493, 360);
             this.txtDeleteKeyName.Name = "txtDeleteKeyName";
             this.txtDeleteKeyName.Size = new System.Drawing.Size(100, 23);
             this.txtDeleteKeyName.TabIndex = 10;
             // 
             // txtKeywordName
             // 
-            this.txtKeywordName.Location = new System.Drawing.Point(126, 116);
+            this.txtKeywordName.Location = new System.Drawing.Point(483, 77);
             this.txtKeywordName.Name = "txtKeywordName";
             this.txtKeywordName.Size = new System.Drawing.Size(100, 23);
             this.txtKeywordName.TabIndex = 6;
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(126, 59);
+            this.txtCategory.Location = new System.Drawing.Point(483, 125);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(100, 23);
             this.txtCategory.TabIndex = 0;
@@ -437,7 +452,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(384, 23);
+            this.label10.Location = new System.Drawing.Point(398, 324);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 15);
             this.label10.TabIndex = 9;
@@ -446,7 +461,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 23);
+            this.label9.Location = new System.Drawing.Point(398, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 15);
             this.label9.TabIndex = 8;
@@ -455,7 +470,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 119);
+            this.label8.Location = new System.Drawing.Point(398, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 7;
@@ -463,7 +478,7 @@
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(98, 167);
+            this.btnAddCategory.Location = new System.Drawing.Point(479, 181);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(104, 28);
             this.btnAddCategory.TabIndex = 2;
@@ -474,7 +489,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 62);
+            this.label7.Location = new System.Drawing.Point(398, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 1;
@@ -495,6 +510,7 @@
             // 
             // ProductGridView
             // 
+            this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGridView.Location = new System.Drawing.Point(3, 3);
             this.ProductGridView.Name = "ProductGridView";
@@ -552,6 +568,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryGridView)).EndInit();
             this.tabProductManagement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -604,5 +621,6 @@
         private Button btn_update;
         private DataGridView dataGridView1;
         private DataGridView ProductGridView;
+        private DataGridView CategoryGridView;
     }
 }

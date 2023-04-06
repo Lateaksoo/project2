@@ -31,7 +31,7 @@ namespace project1
         //카테고리 가져오기 sql
         const string CategorySelectSql = "SELECT category, keyword_name FROM category WHERE keyword_name = @keywordName";
         //콤보박스에 카테고리 넣기 sql
-        const string comboBoxSql = "SELECT DISTINCT keyword_name FROM category";
+        const string comboBoxSql = "SELECT DISTINCT keyword_name , category FROM category";
 
         //상품 관련
         //---------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ namespace project1
                 }
             }
         }
-        public DataTable GetCategoryComboBox() //카테고리 콤보박스에 넣기
+        public DataTable GetCategoryComboBox() //카테고리 데이터를 데이터테이블로 반환하기
         {
             // 테이블에서 카테고리를 가져와서 DataTable로 반환함
             using (SqlCommand cmd = new SqlCommand(comboBoxSql, Program.Conn))

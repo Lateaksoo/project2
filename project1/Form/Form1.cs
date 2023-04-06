@@ -45,6 +45,7 @@ namespace project1
         {
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
+            CategoryGridViewLoad(); //카테고리 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
@@ -154,6 +155,7 @@ namespace project1
             comboBoxCategory.Items.Add(txtKeywordName.Text);
             txtCategory.Text = "";
             txtKeywordName.Text = "";
+            CategoryGridViewLoad();//카테고리 정보 새로고침
         }
         private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
         {
@@ -161,8 +163,17 @@ namespace project1
             manager.CategoryListUp(txtDeleteKeyName.Text);
             comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
             txtDeleteKeyName.Text = "";
+            CategoryGridViewLoad(); //카테고리 정보 새로고침
         }
+        private void CategoryGridViewLoad() //카테고리 정보 불러오기
+        {
+            DataTable categoryTable = manager.GetCategoryComboBox();
+            CategoryGridView.DataSource = categoryTable;
 
+            CategoryGridView.Columns["keyword_name"].HeaderText = "카테고리";
+            CategoryGridView.Columns["category"].HeaderText = "카테고리 번호";
+           
+        }
 
         //---------------------------------------------------------------------------------
         //상품 관리 탭
@@ -180,9 +191,9 @@ namespace project1
 
         public void ProductDataViewLoad() //상품 리스트보이기
         {
-            const string sql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
+            const string Productsql = "SELECT name [상품명] , price [가격] , stock [재고] ,image [사진경로] , category [카테고리] FROM Product";
 
-            using SqlCommand cmd = new(sql, Program.Conn);
+            using SqlCommand cmd = new(Productsql, Program.Conn);
             using SqlDataAdapter adapter = new(cmd);
             DataSet ds = new();
             adapter.Fill(ds);
@@ -249,8 +260,8 @@ namespace project1
             dataGridView1.DataSource = ds.Tables[0];
 
             dataGridView1.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
-            dataGridView1.Columns[0].Width = 90;
-            dataGridView1.Columns[2].Width = 200;
+            
+            
 
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
             dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
