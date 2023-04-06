@@ -237,5 +237,14 @@ namespace project1
             return filepath;
         }
 
+
+
+        //------------------------------------엑셀에 저장하기------------------------------------------
+
+        public void SaveSqlToExcel()
+        {
+
+        }
+
     }//end class
 }

@@ -317,41 +317,7 @@ namespace project1
             form.Show();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            using SqlCommand cmd = new($"select * from Manager", Program.Conn);
-            SqlDataAdapter adapter = new(cmd);
-            DataSet ds = new();
-            adapter.Fill(ds);
 
-            DataTable table = ds.Tables[0];
-
-
-            foreach (DataRow row in table.Rows)
-            {
-                products.Add(new()
-                {
-                    /*Uid = (int)row["uid"],
-                    Name = (string)row["name"],
-                    PhoneNum = (string)row["phonenum"],
-                    PassWord = (string)row["pw"],
-                    Email = (string)row["email"],
-                    RegDate = (DateTime)row["regdate"],*/
-                });
-            }
-            
-            foreach (var item in ProductGridView.Columns)
-            {
-                MessageBox.Show($"{item}");
-            }
-        }
-
-        private void txt_searchProduct_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.pictureBox1_Click(sender, e);
-            }
-        }
-    }
+        
+    }//end class
 }

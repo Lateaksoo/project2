@@ -41,6 +41,9 @@ namespace project1
             if (_loginStatus == 1)
                 Application.Run(new Form1());
 
+
+            //엑셀에 저장하는 함수 
+            conn.Close();
         }
         
         public static IEnumerable<ManagerModel> List()
