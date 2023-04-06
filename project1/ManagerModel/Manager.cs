@@ -13,6 +13,7 @@ using DataTable = System.Data.DataTable;
 using Chart = System.Windows.Forms.DataVisualization.Charting.Chart;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using Application = Microsoft.Office.Interop.Excel.Application;
+using Newtonsoft.Json;
 
 namespace project1
 {
@@ -242,51 +243,9 @@ namespace project1
             return filepath;
         }
 
+        //------------------------------------------json-----------------------------------------
 
-
-        //------------------------------------엑셀에 저장하기------------------------------------------
-
-        public void SaveSqlToExcel() //엑셀에 저장하기
-        {
-            DataTable productTable = GetProductTable();   //상품테이블
-            DataTable managerTable = GetManagerTable();   //메니저테이블
-            DataTable categoryTable = GetCategoryTable(); //카테고리 테이블 
-
-            Application excel = new Application();
-            Workbook productWorkbook = excel.Workbooks.Add();  //상품 엑셀파일 만들기
-            Workbook managerWorkbook = excel.Workbooks.Add();  //매니저 엑셀파일 만들기
-            Workbook categoryWorkbook = excel.Workbooks.Add(); //카테고리 엑셀파일 만들기
-
-            // 현재 실행 파일이 있는 디렉토리 경로
-            string baseDirectory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
-
-            // 경로에서 상위 디렉토리를 추출할 횟수
-            int count = 3;
-
-            // 경로에서 필요한 부분만 추출
-            for (int i = 0; i < count; i++)
-            {
-                baseDirectory = Path.GetDirectoryName(baseDirectory);
-            }
-            string ExcelFilePath = Path.Combine(baseDirectory, "TableExcel"); //테이블엑셀 폴더로 경로 지정
-
-            string productFilePath = Path.Combine(ExcelFilePath, "Product.xlsx"); // Product 엑셀 파일 경로
-            string managerFilePath = Path.Combine(ExcelFilePath, "Manager.xlsx"); // Manager 엑셀 파일 경로
-            string categoryFilePath = Path.Combine(ExcelFilePath, "Category.xlsx"); // Category 엑셀 파일 경로
-
-            //기존 파일 삭제
-            File.Delete(productFilePath);
-            File.Delete(managerFilePath);
-            File.Delete(categoryFilePath);
-            
-            //새 파일 저장
-            productWorkbook.SaveAs(productFilePath);
-            managerWorkbook.SaveAs(managerFilePath);
-            categoryWorkbook.SaveAs(categoryFilePath);
-
-            excel.Quit();
-        }
-
+        //------------------------------------------저장하기-------------------------------
         private DataTable GetCategoryTable()//카테고리 정보 데이터테이블로 가져오기
         {
             string query = "SELECT * FROM category";
@@ -316,6 +275,50 @@ namespace project1
             adapter.Fill(table);  // SqlDataAdapter를 사용하여 DataTable 객체 채우기
             return table;
         }
+
+
+        public void SaveTableToJson() //json 으로 저장하기 
+        {
+            //테이블 정보 가져오기
+            DataTable productTable = GetProductTable();   //상품테이블
+            DataTable managerTable = GetManagerTable();   //메니저테이블
+            DataTable categoryTable = GetCategoryTable(); //카테고리 테이블 
+
+            //DataTable 객체를 JSON 문자열로 변환
+            string productJson = JsonConvert.SerializeObject(productTable, Formatting.Indented);
+            string managerJson = JsonConvert.SerializeObject(managerTable, Formatting.Indented);
+            string categoryJson = JsonConvert.SerializeObject(categoryTable, Formatting.Indented);
+
+            // 현재 실행 파일이 있는 디렉토리 경로
+            string baseDirectory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+
+            // 경로에서 상위 디렉토리를 추출할 횟수
+            int count = 3;
+
+            // 경로에서 필요한 부분만 추출
+            for (int i = 0; i < count; i++)
+            {
+                baseDirectory = Path.GetDirectoryName(baseDirectory);
+            }
+            string JsonFilePath = Path.Combine(baseDirectory, "TableJson"); //TableJson 폴더로 경로 지정
+
+            if (File.Exists(JsonFilePath)) //만약 폴더에 기존 파일이 있다면 삭제하고
+            {
+                File.Delete(JsonFilePath);
+            }
+
+            //파일 저장하기
+            File.WriteAllText(Path.Combine(JsonFilePath, "product.json"), productJson);
+            File.WriteAllText(Path.Combine(JsonFilePath, "manager.json"), managerJson);
+            File.WriteAllText(Path.Combine(JsonFilePath, "category.json"), categoryJson);
+
+        }
+
+
+        //-----------------------------------읽어오기-------------------------------------------
+
+
+
 
 
     }//end class

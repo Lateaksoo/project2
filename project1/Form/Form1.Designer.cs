@@ -533,7 +533,6 @@
             this.label12.Size = new System.Drawing.Size(55, 15);
             this.label12.TabIndex = 6;
             this.label12.Text = "카테고리";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // ProductGridView
             // 

@@ -12,6 +12,8 @@ using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
 using CheckBox = System.Windows.Forms.CheckBox;
 using Application = System.Windows.Forms.Application;
+using Newtonsoft.Json;
+
 
 namespace project1
 {
@@ -46,7 +48,8 @@ namespace project1
            
         }
         private void Form1_Load(object sender, EventArgs e)
-        {//ㅇ
+        {
+
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
@@ -217,31 +220,6 @@ namespace project1
         }
 
 
-        private void ProductGridView_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (ProductGridView.Columns[e.ColumnIndex].Name == "imageCol")
-            {
-                if (ProductGridView.Rows[e.RowIndex].Cells[3].Value == null) return;
-                string imagePath = ProductGridView.Rows[e.RowIndex].Cells[3].Value.ToString(); // 이미지 경로가 있는 열의 인덱스는 3입니다.
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    try
-                    {
-                        Image image = Image.FromFile(imagePath);
-                        e.Value = image;
-                        e.FormattingApplied = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        // 이미지 로드에 실패한 경우, 적절한 처리를 수행합니다.
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-            }
-        }
-       
-
-
         private void DataViewLoad()
         {
             string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
@@ -286,10 +264,6 @@ namespace project1
             form.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -308,14 +282,11 @@ namespace project1
             form.Show();
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            manager.SaveSqlToExcel();
+            manager.SaveTableToJson();
         }
     }//end class
 }

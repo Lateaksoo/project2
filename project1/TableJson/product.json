@@ -1,0 +1,20 @@
+[
+  {
+    "uid": 1,
+    "name": "맥북",
+    "price": 3000,
+    "stock": 1,
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\bin\\Debug\\net6.0-windows\\Mac.png",
+    "category": "노트북",
+    "detail": "사고싶어요"
+  },
+  {
+    "uid": 2,
+    "name": "갤럭시북",
+    "price": 20000,
+    "stock": 9,
+    "image": "D:\\DevRoot\\project1\\project1\\project1/Image/Galaxy.png",
+    "category": "노트북",
+    "detail": "샘성"
+  }
+]
