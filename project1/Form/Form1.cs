@@ -331,10 +331,20 @@ namespace project1
             SqlDataAdapter adapter = new(cmd);
             DataSet ds = new();
             adapter.Fill(ds);
-
             DataTable table = ds.Tables[0];
 
+
             ProductGridView.DataSource = ds.Tables[0];
+            if (comboBox.SelectedItem.ToString() == "전체보기")
+            {
+                using SqlCommand allcmd = new($"select name [상품명] , price [가격] , stock [재고] , category [카테고리] from Product", Program.Conn);
+                SqlDataAdapter alladapter = new(allcmd);
+                DataSet allds = new();
+                alladapter.Fill(allds);
+                DataTable alltable = allds.Tables[0];
+                ProductGridView.DataSource = allds.Tables[0];
+            }
+            
         }
 
 
