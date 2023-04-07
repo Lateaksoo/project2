@@ -1,10 +1,26 @@
 [
   {
     "uid": 1,
+    "name": "ssknu",
+    "pw": "asdf",
+    "phonenum": "010-2242-9544",
+    "email": "ssknu@naver.com",
+    "regdate": "2023-04-03T17:01:28.113"
+  },
+  {
+    "uid": 2,
+    "name": "teaksoo",
+    "pw": "asdf1234",
+    "phonenum": "010-0000-0000",
+    "email": "",
+    "regdate": "2023-04-03T17:01:28.113"
+  },
+  {
+    "uid": 3,
     "name": "a",
     "pw": "asdf",
     "phonenum": "000-0000-0000",
     "email": "",
-    "regdate": "2023-04-06T19:22:11.45"
+    "regdate": "2023-04-06T15:55:47.437"
   }
 ]

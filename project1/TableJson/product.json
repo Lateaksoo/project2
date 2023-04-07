@@ -1,38 +1,20 @@
 [
   {
     "uid": 1,
-    "name": "김건우",
-    "price": 1000000000,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "name": "맥북",
+    "price": 3000,
+    "stock": 2,
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\Mac.png",
     "category": "노트북",
-    "detail": ""
+    "detail": "사고싶어요"
   },
   {
     "uid": 2,
-    "name": "건우시계",
-    "price": 1000000,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "name": "갤럭시북",
+    "price": 20000,
+    "stock": 9,
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\Galaxy.png",
     "category": "노트북",
-    "detail": ""
-  },
-  {
-    "uid": 3,
-    "name": "건우마우스",
-    "price": 1000,
-    "stock": 12,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
-    "category": "키보드/마우스",
-    "detail": ""
-  },
-  {
-    "uid": 4,
-    "name": "건우키보드",
-    "price": 120,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
-    "category": "키보드/마우스",
-    "detail": ""
+    "detail": "샘성"
   }
 ]
