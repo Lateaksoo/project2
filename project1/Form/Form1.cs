@@ -52,12 +52,7 @@ namespace project1
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
             CatagoryDataViewLoad(); // ---카테고리 리스트 불러오기
-            DataTable categoryTable = manager.GetCategoryComboBox();
-            // 콤보박스에 카테고리를 추가함
-            foreach (DataRow row in categoryTable.Rows)
-            {
-                comboBoxCategory.Items.Add(row["keyword_name"]);
-            }
+
 
             //기본으로 선택되어 있는 값
 
@@ -154,7 +149,7 @@ namespace project1
             searchProductName = txtSearch.Text;
         }
 
-       
+
 
         //---------------------------------------------------------------------------------
         //상품 관리 탭
@@ -331,14 +326,14 @@ namespace project1
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in table.Rows)
             {
-                string keywordName = row["keyword_name"].ToString();
-                if (!string.IsNullOrEmpty(keywordName))  // 빈 문자열이 아닌 경우에만 콤보박스에 추가
-                {
-                    combo_Search.Items.Add(keywordName);
-                }
-            }
+                string categoryName = row["keyword_name"].ToString();
 
-            //combo_Search.Items.Add("sadf");
+                if (categoryName != "전체보기")
+                {
+                    comboBoxCategory.Items.Add(row["keyword_name"]);
+                }
+                combo_Search.Items.Add(row["keyword_name"]);
+            }
         }
 
         private void combo_Search_SelectedIndexChanged(object sender, EventArgs e)
