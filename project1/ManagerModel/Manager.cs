@@ -331,6 +331,17 @@ namespace project1
             using SqlCommand cmd = new("TRUNCATE TABLE product; TRUNCATE TABLE Manager; TRUNCATE TABLE category;", Program.Conn);
             cmd.ExecuteNonQuery();
 
+            //Product 테이블의 image 경로 사용자 컴퓨터의 경로로 변경 후 저장
+            string productImagePath = "image";
+            string newImagePath = "";
+            foreach (DataRow row in productTable.Rows)
+            {
+                newImagePath = row.Field<string>(productImagePath); 
+                string fileName = Path.GetFileName(newImagePath); //파일 이름만 때오기
+                string newImage = Path.Combine(baseDirectory, "Image", fileName); //사용자의 경로로 새로 만들기
+                row[productImagePath] = newImage; //새로만든 경로로 테이블에 다시 저장
+            }
+
             //테이블에 불러온 정보 저장하기
             using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Program.Conn))
             {
@@ -340,8 +351,8 @@ namespace project1
                 bulkCopy.WriteToServer(managerTable);
                 bulkCopy.DestinationTableName = "category";
                 bulkCopy.WriteToServer(categoryTable);
-
             }
+             
 
         }
 
