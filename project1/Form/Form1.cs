@@ -230,6 +230,7 @@ namespace project1
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
             dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
         }
+        //---------------------------------------------------------------------------//
         //----------------------새로고침----------------------------------------------//
         private void btn_load_Click(object sender, EventArgs e)
         {
