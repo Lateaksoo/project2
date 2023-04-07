@@ -167,7 +167,7 @@ namespace project1
 
         public void ProductDataViewLoad() //상품 리스트보이기
         {
-            const string sql = "SELECT name [상품명] , price [가격] , stock [재고], category [카테고리] FROM Product";
+            string sql = "SELECT name [상품명] , price [가격] , stock [재고], category [카테고리] FROM Product";
 
             using SqlCommand cmd = new(sql, Program.Conn);
             using SqlDataAdapter adapter = new(cmd);
@@ -218,6 +218,7 @@ namespace project1
 
         }
 
+        //---------------------------------------------------------------------------//
         private void DataViewLoad() //계정 보이기
         {
             string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
@@ -239,7 +240,6 @@ namespace project1
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;  // 나머지 여백을 다 카바할만큼 폭 차지 
             dataGridView1.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.            
         }
-        //---------------------------------------------------------------------------//
         //----------------------새로고침----------------------------------------------//
         private void btn_load_Click(object sender, EventArgs e)
         {
@@ -288,7 +288,7 @@ namespace project1
             manager.SaveTableToJson();
         }
         //---------------------------------------SearchProduct---------------------------------------//
-        private void txt_searchProduct_KeyDown(object sender, KeyEventArgs e)
+        private void txt_searchProduct_KeyDown(object sender, KeyEventArgs e) //엔터 치는 동작
         {
             if (e.KeyCode == Keys.Enter)
             {

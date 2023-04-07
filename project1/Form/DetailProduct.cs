@@ -83,17 +83,9 @@ namespace project1
 
         private void btnSave_Click(object sender, EventArgs e) //저장 버튼을 누르면 데이터베이스에 저장
         {
-            btnFindIamge.Enabled = false; // 버튼 비활성화
-            txtName.Enabled = false;
-            txtPrice.Enabled = false;
-            txtStock.Enabled = false;
-            txtProductImage.Enabled = false;
-            comboBoxCategory.Enabled = false;
-            txtDetail.Enabled = false;
-
             manager.UpdateProduct(_name, txtName.Text, txtPrice.Text, txtStock.Text, txtProductImage.Text, comboBoxCategory.Text, txtDetail.Text);
-            this.Close();
             form1.ProductDataViewLoad();
+            this.Close();
         }
 
         private void btnFindIamge_Click(object sender, EventArgs e)
