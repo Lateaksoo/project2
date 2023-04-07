@@ -4,7 +4,7 @@
     "name": "택수스노트북",
     "price": 22000000,
     "stock": 10,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\ASusTuf.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\ASusTuf.jpg",
     "category": "노트북",
     "detail": "CPU : RYZEN 7 4800H   512G SSD 2X2슬롯\r\nRTX 3050 144Hz \r\n\r\n디지게 좋은 화면, 키보드 RGB 반짝반짝\r\n깔쌈한 디자인 싸운드 몰입감 디진다 해~~~~"
   },
@@ -13,7 +13,7 @@
     "name": "건우맥북",
     "price": 3000000,
     "stock": 20,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\맥북.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\맥북.jpg",
     "category": "노트북",
     "detail": "애플연동좋고 감성좋고 스타벅스 필수템\r\n\r\nM2칩셋 8코어 성능대비 비싼가격"
   },
@@ -22,7 +22,7 @@
     "name": "로지택수마우스",
     "price": 50000,
     "stock": 10,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\로지텍마우스.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\로지텍마우스.jpg",
     "category": "키보드/마우스",
     "detail": "블루투스기능 좋아~~\r\n사용시간 길어~~\r\n인체공학적 디자인~~\r\n다양한 커맨드 설정가능~~"
   },
@@ -31,7 +31,7 @@
     "name": "건우그램",
     "price": 2000000,
     "stock": 30,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\LG그램.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\LG그램.jpg",
     "category": "노트북",
     "detail": "겁나가벼움 \r\n심플한 디자인 \r\n대학생의 필수템 \r\n성능 가격만큼~"
   },
@@ -40,7 +40,7 @@
     "name": "건우크로소프트마우스",
     "price": 30000,
     "stock": 20,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\마이크로소프트마우스.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\마이크로소프트마우스.jpg",
     "category": "키보드/마우스",
     "detail": "빌게이츠가 노래를 어떻게 부르는지 알아요??\r\n\r\n마이크로 소프트하게 하하~~~"
   },
@@ -49,7 +49,7 @@
     "name": "레노버노트북",
     "price": 1000000,
     "stock": 10,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\레노버아이디어패드.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\레노버아이디어패드.jpg",
     "category": "노트북",
     "detail": "가성비 갑오브갑"
   },
@@ -58,7 +58,7 @@
     "name": "로지택수키보드",
     "price": 200000,
     "stock": 12,
-    "image": "D:\\TeamProject\\Project_ver1.0\\project1\\Image\\로지텍키보드.jpg",
+    "image": "D:\\DevRoot\\project1\\project1\\project1\\Image\\로지텍키보드.jpg",
     "category": "키보드/마우스",
     "detail": "내가써봄 진짜 좋아~~~\r\n앙기모찌~~~~"
   }

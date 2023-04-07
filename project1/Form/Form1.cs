@@ -32,7 +32,6 @@ namespace project1
 
         public Form1()
         {
-
             InitializeComponent();
             CategoryList();//-----콤보박스애 카테고리 리스트 추가
             productManagerModel = new ProductManagerModel();
@@ -52,6 +51,7 @@ namespace project1
             manager.ReadProductJson();
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
+            CatagoryDataViewLoad(); // ---카테고리 리스트 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in categoryTable.Rows)
@@ -207,9 +207,39 @@ namespace project1
             ProductGridView.AllowUserToDeleteRows = false;   // 직접 행 삭제는 차단.
         }
 
+        private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) //상품 더블클릭하면 상세정보 보기
+        {
+            // 선택된 셀의 정보를 가져오기
+
+            int num = ProductGridView.CurrentCell.RowIndex;
+            string name = ProductGridView.Rows[num].Cells[0].Value.ToString();
+
+            int price;
+            int stock;
+            string image;
+            string category;
+            string detail;
+
+            string query = $"SELECT * FROM Product WHERE name = '{name}'";
+            using SqlCommand cmd = new SqlCommand(query, Program.Conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                price = (int)reader["price"];
+                stock = (int)reader["stock"];
+                image = (string)reader["image"];
+                category = (string)reader["category"];
+                detail = (string)reader["detail"];
+            };
 
 
-        private void DataViewLoad()
+            // DetailProduct 폼을 생성하고 선택된 셀의 정보를 전달
+            DetailProduct detailProductForm = new DetailProduct(this, name, price, stock, image, category, detail);
+            detailProductForm.Show();
+
+        }
+
+        private void DataViewLoad() //계정 보이기
         {
             string sql = "SELECT uid [Uid], name [아이디], phonenum [전화번호], email [전자우편] FROM Manager";
 
@@ -347,38 +377,24 @@ namespace project1
             
         }
 
-
-        private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void CatagoryDataViewLoad()
         {
-            // 선택된 셀의 정보를 가져오기
+            const string CategorySelectSql = "SELECT category, keyword_name FROM category";
+            using SqlCommand cmd = new(CategorySelectSql, Program.Conn);
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet ds = new();
+            adapter.Fill(ds);
 
-            int num = ProductGridView.CurrentCell.RowIndex;
-            string name = ProductGridView.Rows[num].Cells[0].Value.ToString();
+            if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
 
-            int price;
-            int stock;
-            string image;
-            string category;
-            string detail;
+            // DataGridView 에 데이터 연결!!
+            dataGridView_Category.DataSource = ds.Tables[0];
 
-            string query = $"SELECT * FROM Product WHERE name = '{name}'";
-            using SqlCommand cmd = new SqlCommand(query, Program.Conn);
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                reader.Read();
-                price = (int)reader["price"];
-                stock = (int)reader["stock"];
-                image = (string)reader["image"];
-                category = (string)reader["category"];
-                detail = (string)reader["detail"];
-            };
-
-
-            // DetailProduct 폼을 생성하고 선택된 셀의 정보를 전달
-            DetailProduct detailProductForm = new DetailProduct(this, name, price, stock, image, category, detail);
-            detailProductForm.Show();
-
+            dataGridView_Category.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
+            dataGridView_Category.Columns[1].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
+            dataGridView_Category.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+       
     }//end class
 }
 
