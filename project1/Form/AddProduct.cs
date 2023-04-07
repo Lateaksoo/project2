@@ -127,6 +127,15 @@ namespace project1
         private void btnFindIamge_Click(object sender, EventArgs e)
         {
             txtProductImage.Text = manager.FindInamge();
+            try
+            {
+                pictureBox1.Image = Bitmap.FromFile($@"{txtProductImage.Text}");
+            }
+            catch (Exception ex)
+            {
+                txtProductImage.Text = "";
+                return;
+            }
         }
     }
 }
