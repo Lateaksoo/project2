@@ -70,6 +70,7 @@ namespace project1
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("추가 완료");
                 CategoryListUp(keywordName);
+                
             }
         }
 
@@ -286,8 +287,8 @@ namespace project1
             string managerJson = JsonConvert.SerializeObject(managerTable, Formatting.Indented);
             string categoryJson = JsonConvert.SerializeObject(categoryTable, Formatting.Indented);
 
-            // 경로에서 상위 디렉토리를 추출할 횟수
-           
+            
+            
             string JsonFilePath = Path.Combine(baseDirectory, "TableJson"); //TableJson 폴더로 경로 지정
 
             if (File.Exists(JsonFilePath)) //만약 폴더에 기존 파일이 있다면 삭제하고
@@ -305,7 +306,7 @@ namespace project1
 
         //-----------------------------------읽어오기-------------------------------------------
 
-        public void ReadProductJson()
+        public void ReadProductJson()  //json파일 읽어오기 
         {
             int count = 3;
             for (int i = 0; i < count; i++)

@@ -60,7 +60,8 @@ namespace project1
             }
 
             //기본으로 선택되어 있는 값
-            comboBoxCategory.SelectedIndex = 0;
+
+            //comboBoxCategory.SelectedIndex = 0;
             timeUnit = "month";
             comboBoxSex.SelectedIndex = 0;
             dtpStartDate.Value = DateTime.Now.AddMonths(-6);
@@ -153,24 +154,7 @@ namespace project1
             searchProductName = txtSearch.Text;
         }
 
-        //---------------------------------------------------------------------------------
-        //카테고리 관리 탭
-        private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
-        {
-            manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
-            manager.CategoryListUp(txtKeywordName.Text);
-            comboBoxCategory.Items.Add(txtKeywordName.Text);
-            txtCategory.Text = "";
-            txtKeywordName.Text = "";
-        }
-        private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
-        {
-            manager.DeleteCategory(txtDeleteKeyName.Text);
-            manager.CategoryListUp(txtDeleteKeyName.Text);
-            comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
-            txtDeleteKeyName.Text = "";
-        }
-
+       
 
         //---------------------------------------------------------------------------------
         //상품 관리 탭
@@ -347,7 +331,11 @@ namespace project1
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in table.Rows)
             {
-                combo_Search.Items.Add(row["keyword_name"]);
+                string keywordName = row["keyword_name"].ToString();
+                if (!string.IsNullOrEmpty(keywordName))  // 빈 문자열이 아닌 경우에만 콤보박스에 추가
+                {
+                    combo_Search.Items.Add(keywordName);
+                }
             }
 
             //combo_Search.Items.Add("sadf");
@@ -374,27 +362,40 @@ namespace project1
                 DataTable alltable = allds.Tables[0];
                 ProductGridView.DataSource = allds.Tables[0];
             }
-            
+
         }
 
         public void CatagoryDataViewLoad()
         {
-            const string CategorySelectSql = "SELECT category, keyword_name FROM category";
-            using SqlCommand cmd = new(CategorySelectSql, Program.Conn);
-            using SqlDataAdapter adapter = new(cmd);
-            DataSet ds = new();
-            adapter.Fill(ds);
-
-            if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) return;
-
-            // DataGridView 에 데이터 연결!!
-            dataGridView_Category.DataSource = ds.Tables[0];
+            DataTable categoryTable = manager.GetCategoryComboBox();
+            dataGridView_Category.DataSource = categoryTable;
 
             dataGridView_Category.Columns[0].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
             dataGridView_Category.Columns[1].ReadOnly = true;  // 첫번째 컬럼은 PK 니까. 편집불가 로 설정
             dataGridView_Category.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
-       
+        //---------------------------------------------------------------------------------
+        //카테고리 관리 탭
+        private void btnAddCategory_Click(object sender, EventArgs e) //카테고리 추가
+        {
+            manager.InsertCategory(txtCategory.Text, txtKeywordName.Text);
+            manager.CategoryListUp(txtKeywordName.Text);
+            comboBoxCategory.Items.Add(txtKeywordName.Text);
+            txtCategory.Text = "";
+            txtKeywordName.Text = "";
+            CatagoryDataViewLoad();
+        }
+        private void btnDeleteCategory_Click(object sender, EventArgs e) //카테고리 삭제
+        {
+            manager.DeleteCategory(txtDeleteKeyName.Text);
+            manager.CategoryListUp(txtDeleteKeyName.Text);
+            comboBoxCategory.Items.Remove(txtDeleteKeyName.Text);
+            txtDeleteKeyName.Text = "";
+            CatagoryDataViewLoad();
+        }
+
+
     }//end class
 }
 

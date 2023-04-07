@@ -5,6 +5,7 @@ CREATE TABLE category (
     keyword_name VARCHAR(50) NOT NULL,
 );
 
+INSERT INTO category (category, keyword_name) VALUES ('0', '전체보기');
 INSERT INTO category (category, keyword_name) VALUES ('50000089', '데스크탑');
 INSERT INTO category (category, keyword_name) VALUES ('50000151', '노트북');
 INSERT INTO category (category, keyword_name) VALUES ('50000153', '모니터');
