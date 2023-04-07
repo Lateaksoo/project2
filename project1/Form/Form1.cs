@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 using System.Data;
 using System.Text;
 using System.Drawing.Imaging;
 using Newtonsoft.Json;
-using ComboBox = System.Windows.Forms.ComboBox;
+
+
+
 
 namespace project1
 {
@@ -30,6 +32,7 @@ namespace project1
 
         public Form1()
         {
+
             InitializeComponent();
             CategoryList();//-----콤보박스애 카테고리 리스트 추가
             productManagerModel = new ProductManagerModel();
@@ -46,7 +49,7 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            manager.ReadProductJson();
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
             DataTable categoryTable = manager.GetCategoryComboBox();
@@ -309,7 +312,7 @@ namespace project1
             adapter.Fill(ds);
 
             DataTable table = ds.Tables[0];
-           
+
             // 콤보박스에 카테고리를 추가함
             foreach (DataRow row in table.Rows)
             {
@@ -331,6 +334,39 @@ namespace project1
             DataTable table = ds.Tables[0];
 
             ProductGridView.DataSource = ds.Tables[0];
+        }
+
+
+        private void ProductGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 선택된 셀의 정보를 가져오기
+
+            int num = ProductGridView.CurrentCell.RowIndex;
+            string name = ProductGridView.Rows[num].Cells[0].Value.ToString();
+
+            int price;
+            int stock;
+            string image;
+            string category;
+            string detail;
+
+            string query = $"SELECT * FROM Product WHERE name = '{name}'";
+            using SqlCommand cmd = new SqlCommand(query, Program.Conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                price = (int)reader["price"];
+                stock = (int)reader["stock"];
+                image = (string)reader["image"];
+                category = (string)reader["category"];
+                detail = (string)reader["detail"];
+            };
+
+
+            // DetailProduct 폼을 생성하고 선택된 셀의 정보를 전달
+            DetailProduct detailProductForm = new DetailProduct(this, name, price, stock, image, category, detail);
+            detailProductForm.Show();
+
         }
     }//end class
 }

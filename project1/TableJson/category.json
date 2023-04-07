@@ -1,9 +1,5 @@
 [
   {
-    "category": "50000089",
-    "keyword_name": "데스크탑"
-  },
-  {
     "category": "50000151",
     "keyword_name": "노트북"
   },
@@ -16,7 +12,7 @@
     "keyword_name": "키보드/마우스"
   },
   {
-    "category": "",
-    "keyword_name": ""
+    "category": "50000089",
+    "keyword_name": "데스크탑"
   }
 ]
