@@ -1,38 +1,20 @@
 [
   {
-    "uid": 1,
-    "name": "김건우",
-    "price": 1000000000,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "uid": 6,
+    "name": "택수스노트북",
+    "price": 22000000,
+    "stock": 10,
+    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/ASusTuf.jpg",
     "category": "노트북",
-    "detail": ""
+    "detail": "CPU : RYZEN 7 4800H   512G SSD 2X2슬롯\r\nRTX 3050 144Hz \r\n\r\n디지게 좋은 화면, 키보드 RGB 반짝반짝\r\n깔쌈한 디자인 싸운드 몰입감 디진다 해~~~~"
   },
   {
-    "uid": 2,
-    "name": "건우시계",
-    "price": 1000000,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
+    "uid": 7,
+    "name": "건우맥북",
+    "price": 3000000,
+    "stock": 20,
+    "image": "D:\\TeamProject\\Project_ver1.0\\project1/Image/맥북.jpg",
     "category": "노트북",
-    "detail": ""
-  },
-  {
-    "uid": 3,
-    "name": "건우마우스",
-    "price": 1000,
-    "stock": 12,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
-    "category": "키보드/마우스",
-    "detail": ""
-  },
-  {
-    "uid": 4,
-    "name": "건우키보드",
-    "price": 120,
-    "stock": 1,
-    "image": "C:\\DevRoot\\Project1.0\\project1/Image/",
-    "category": "키보드/마우스",
-    "detail": ""
+    "detail": "애플연동좋고 감성좋고 스타벅스 필수템"
   }
 ]
