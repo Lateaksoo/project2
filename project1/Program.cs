@@ -18,8 +18,8 @@ namespace project1
         public static int Uid { get=>_uid; set=>_uid = value; }
 
 
-        //static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
-        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
+        static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=my_user; pwd=1234; Encrypt=false";
+        //static string strConn = "Server=127.0.0.1; Database=Kims_Familly; uid=myuser; pwd=1234; Encrypt=false";
         private static SqlConnection conn;
         public static SqlConnection Conn { get=>conn; set=>conn = value; }
         //-----------------Manager Table을 저장할 List생성----------------------------//

@@ -236,7 +236,7 @@ namespace project1
             DataViewLoad();
         }
         private int _uid;
-
+        //---------------------------------계정 수정--------------------------------------//
         private void btn_update_Click(object sender, EventArgs e)
         {
             int num = dataGridView1.CurrentCell.RowIndex;
