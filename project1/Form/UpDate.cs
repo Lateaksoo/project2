@@ -32,7 +32,7 @@ namespace project1
         }
         public void Find()
         {
-            using SqlCommand cmd = new("SELECT * FROM dbo.Manager WHERE uid = @uid", Program.Conn);
+            using SqlCommand cmd = new("SELECT * FROM Manager WHERE uid = @uid", Program.Conn);
             cmd.Parameters.AddWithValue("@uid", _uid);
 
             using SqlDataReader reader = cmd.ExecuteReader();
@@ -56,7 +56,10 @@ namespace project1
                 MessageBox.Show("비밀번호가 일치하지 않습니다.");
             else
             {               
-                using (SqlCommand cmd = new("UPDATE Manager set name = @name, phonenum = @phonenum, pw = @pw, email = @email WHERE uid = @uid", Program.Conn))
+                using (SqlCommand cmd = new("UPDATE Manager set " +
+                                            "name = @name, phonenum = @phonenum, " +
+                                            "pw = @pw, email = @email " +
+                                            "WHERE uid = @uid", Program.Conn))
                 {
                     cmd.Parameters.AddWithValue("@name", model.Name);
                     cmd.Parameters.AddWithValue("@pw", txt_pwcheck.Text);

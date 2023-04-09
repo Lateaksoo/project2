@@ -1,14 +1,6 @@
 [
   {
     "uid": 1,
-    "name": "ssknu",
-    "pw": "asdf",
-    "phonenum": "010-2242-9544",
-    "email": "ssknu@naver.com",
-    "regdate": "2023-04-05T16:00:07.867"
-  },
-  {
-    "uid": 2,
     "name": "a",
     "pw": "asdf",
     "phonenum": "010-2242-9544",

@@ -94,7 +94,7 @@ namespace project1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var form = Application.OpenForms["Find_idpw"];
+            Form form = Application.OpenForms["Find_idpw"];
 
             if (form == null)
             {

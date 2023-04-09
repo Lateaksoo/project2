@@ -34,7 +34,7 @@ namespace project1
                 if (txt_id.Text.Trim() == item.Name)
                     idstatus= 0;
             }
-            if (txt_id.Text.Length == 0)
+            if (txt_id.Text.Trim().Length == 0)
                 MessageBox.Show("ID를 입력하세요");
             else if (idstatus == 1)
             {
@@ -46,7 +46,7 @@ namespace project1
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txt_id.Text == "")
+            if (txt_id.Text.Trim().Length == 0)
                 MessageBox.Show("ID를 입력하세요");
             else if (_idstatus == 0)
                 MessageBox.Show("ID중복확인.");
@@ -59,7 +59,8 @@ namespace project1
             else
             {
                 //insert INTO Manager(name, pw, phonenum, email)
-                using SqlCommand cmd = new("INSERT INTO Manager(name, pw, phonenum, email) VALUES (@name, @pw, @phonenum, @email)", Program.Conn);
+                using SqlCommand cmd = new("INSERT INTO Manager(name, pw, phonenum, email) " +
+                                           "VALUES (@name, @pw, @phonenum, @email)", Program.Conn);
                 cmd.Parameters.AddWithValue("@name", txt_id.Text.Trim());
                 cmd.Parameters.AddWithValue("@pw", txt_pw.Text.Trim());
                 cmd.Parameters.AddWithValue("@phonenum", txt_phonenum.Text);

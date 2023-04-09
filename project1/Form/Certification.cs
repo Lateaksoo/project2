@@ -32,7 +32,7 @@ namespace project1
 
         public void Find()
         {
-            using SqlCommand cmd = new("SELECT * FROM dbo.Manager WHERE uid = @uid", Program.Conn);
+            using SqlCommand cmd = new("SELECT * FROM Manager WHERE uid = @uid", Program.Conn);
             cmd.Parameters.AddWithValue("@uid", _uid);
 
             using SqlDataReader reader = cmd.ExecuteReader();
