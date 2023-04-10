@@ -211,6 +211,57 @@ namespace project1
         {
             string sql = $"UPDATE Product SET name = @Name, price = @Price, stock = @stock, image = @Image, category = @category, detail = @detail WHERE name = @OriginName";
             SqlCommand cmdUpdate = new SqlCommand(sql, Program.Conn);
+
+            string sourceImagePath = image; // txtProductImage 텍스트 상자에 입력된 이미지 경로
+            string targetFileName = Path.GetFileName(sourceImagePath); // 파일 이름 추출
+            string targetDirectory = Path.GetDirectoryName(Application.ExecutablePath); // 현재 실행 파일이 있는 디렉토리 경로
+
+            // 경로에서 상위 디렉토리를 추출할 횟수
+            int count = 3;
+
+            // 경로에서 필요한 부분만 추출
+            for (int i = 0; i < count; i++)
+            {
+                targetDirectory = Path.GetDirectoryName(targetDirectory);
+            }
+
+            // 추가된 상품의 이미지 경로를 프로그램 내의 폴더로 변경
+            string targetImagePath = targetDirectory + "/" + "Image/" + targetFileName;
+
+            if (File.Exists(targetImagePath)) // 이미 파일이 존재하는지 확인
+            {
+                // 덮어쓰기 여부를 물어봄
+                DialogResult result = MessageBox.Show("같은 이름의 파일이 이미 존재합니다. 덮어쓰시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // 이미지 파일 삭제
+                        File.Delete(targetImagePath);
+
+                        // 이미지 파일 복사
+                        File.Copy(sourceImagePath, targetImagePath, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        image = "";  //이미지 파일 저장에 실패하면 잘못된 경로로 판단하고 입력값을 저장하지 않는다.
+                    }
+                }
+                else if (result == DialogResult.No) return;  // 파일을 저장하지 않고 재입력을 요구
+            }
+            else
+            {
+                try
+                {
+                    // 이미지 파일 복사
+                    File.Copy(sourceImagePath, targetImagePath, true);
+                }
+                catch (Exception ex)
+                {
+                    image = "";  //이미지 파일 저장에 실패하면 잘못된 경로로 판단하고 입력값을 저장하지 않는다.
+                }
+            }
+            image = targetImagePath;
             cmdUpdate.Parameters.AddWithValue("@OriginName", originName);
             cmdUpdate.Parameters.AddWithValue("@name", name);
             cmdUpdate.Parameters.AddWithValue("@price", price);
