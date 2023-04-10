@@ -328,6 +328,11 @@ namespace project1
 
         public void SaveTableToJson() //json 으로 저장하기 
         {
+            int count = 3;
+            for (int i = 0; i < count; i++)
+            {
+                baseDirectory = Path.GetDirectoryName(baseDirectory);
+            }
             //테이블 정보 가져오기
             DataTable productTable = GetProductTable();   //상품테이블
             DataTable managerTable = GetManagerTable();   //메니저테이블

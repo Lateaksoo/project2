@@ -48,7 +48,7 @@ namespace project1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            manager.ReadProductJson();
+            
             DataViewLoad();//계정 불러오기
             ProductDataViewLoad(); //상품 정보 불러오기
             CatagoryDataViewLoad(); // ---카테고리 리스트 불러오기

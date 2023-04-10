@@ -25,7 +25,8 @@ namespace project1
         //----------------------------------------------------------------------------------------------//
         
         List<ManagerModel> list = new();
-        
+        private Manager manager;
+        private ProductManagerModel productManagerModel;
         public int loginstatus; 
         
 
@@ -33,14 +34,15 @@ namespace project1
         {
             
             InitializeComponent();
-           
+            productManagerModel = new ProductManagerModel();
+            manager = new Manager(productManagerModel);
             Program.List();
             
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            manager.ReadProductJson();
         }
         ////-------커밋왜안됨?
         
